@@ -59,7 +59,12 @@
         }
 
         #main-content {
-            display: none; /* Hide the main content initially */
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 120px; /* Adjusted margin top to accommodate fixed header */
         }
 
         header {
@@ -90,30 +95,17 @@
             color: #fff;
         }
 
-        .content {
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
-        }
-
         .profile-picture {
-            position: relative;
-            width: 150px; /* Fixed size */
-            height: 150px; /* Fixed size */
+            max-width: 30vw; /* Responsive size */
             margin-bottom: 20px;
-            overflow: hidden;
-            border-radius: 50%; /* Circular shape */
-            box-shadow: 0 0 15px rgba(255, 0, 255, 0.8); /* Pink/purple glow effect */
-            border: 3px solid #fff; /* White border */
+            position: relative; /* Ensure relative positioning */
         }
 
         .profile-picture img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid #ff00ff; /* Pink/purple border */
+            box-shadow: 0 0 20px #ff00ff; /* Pink/purple glow */
         }
 
         .intro {
@@ -130,7 +122,7 @@
         }
 
         .intro p {
-            font-size: 3em; /* Title size */
+            font-size: 3em; /*Title size*/
             line-height: 1.6;
         }
 
@@ -194,10 +186,10 @@
 
         @keyframes glowFooter {
             0% {
-                box-shadow: 0 0 10px rgba(255, 0, 255, 0); /* No glow */
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0); /* No glow */
             }
             100% {
-                box-shadow: 0 0 20px rgba(255, 0, 255, 0.8); /* Glow effect */
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Glow effect */
             }
         }
 
@@ -228,8 +220,7 @@
             }
 
             .profile-picture {
-                width: 200px; /* Larger size */
-                height: 200px; /* Larger size */
+                max-width: 150px;
             }
 
             .intro {
@@ -256,10 +247,10 @@
     <video id="main-video" autoplay muted loop>
         <source src="y2mate.com - Clove LIVE wallpaper 4K  Valorant Episode 8  Act 2  Homescreen_1080p.mp4" type="video/mp4">
     </video>
+    <header>
+        <h1>Welcome to my world!</h1>
+    </header>
     <div id="main-content">
-        <header>
-            <h1>Welcome to my world!</h1>
-        </header>
         <div class="content">
             <div class="profile-picture">
                 <img src="4C7F5981-86C2-416D-9742-0EECAC5626B1 (1).jpeg" alt="Profile Picture">
@@ -273,25 +264,15 @@
                 <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
                 <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
                 <a href="https://specs.gg/ngleeq.thai" target="_blank">My Settings</a>
-                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Tracker</a>
+                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">My Tracker</a>
             </div>
         </div>
     </div>
     <footer>
-        <p>Follow me on social media</p>
-        <img src="Valorant_Full_Logo.svg.png" alt="Valorant Logo" class="valorant-logo">
+        <p>Designed with <img class="valorant-logo" src="Valorant 4K.png" alt="Valorant Logo"> by ngleeqthai</p>
     </footer>
-    <script>
-        // Simulate loading process
-        setTimeout(function() {
-            document.getElementById('loading-screen').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-            document.getElementById('main-video').style.display = 'block';
-        }, 5000); // Adjust the timeout as needed
-    </script>
 </body>
 </html>
-
 
 
 
