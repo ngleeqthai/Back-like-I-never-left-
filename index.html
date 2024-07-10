@@ -105,33 +105,12 @@
             border-radius: 50%; /* Circular shape */
             overflow: hidden; /* Ensure image does not overflow */
             position: relative; /* Position relative for absolute border */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Glow effect */
         }
 
         .profile-picture img {
             width: 100%;
             border-radius: 50%; /* Circular shape */
-        }
-
-        .profile-picture::before {
-            content: '';
-            position: absolute;
-            top: -10px; /* Adjust distance outside the profile picture */
-            left: -10px; /* Adjust distance outside the profile picture */
-            width: calc(100% + 20px); /* Adjust border width */
-            height: calc(100% + 20px); /* Adjust border height */
-            border: 2px solid transparent; /* Transparent border */
-            border-radius: 50%; /* Circular shape */
-            z-index: -1; /* Behind the image */
-            animation: glowBorder 2s ease-in-out infinite alternate; /* Glow animation */
-        }
-
-        @keyframes glowBorder {
-            0% {
-                box-shadow: 0 0 10px rgba(255, 255, 255, 0); /* No glow */
-            }
-            100% {
-                box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Glow effect */
-            }
         }
 
         .intro {
@@ -336,6 +315,7 @@
     </script>
 </body>
 </html>
+
 
 
 
