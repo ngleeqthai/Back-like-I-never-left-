@@ -38,7 +38,7 @@
             z-index: 9999;
         }
 
-        #loading-video, #video-background, #main-video {
+        #loading-video {
             position: fixed;
             top: 0;
             left: 0;
@@ -49,17 +49,24 @@
             pointer-events: none; /* Make the video non-interactive */
         }
 
-        #loading-video, #main-video {
-            display: none; /* Hide loading video and main video initially */
-        }
-
         #loading-screen h1 {
             font-size: 5em;
             color: #fff;
+            animation: glowLoading 2s ease-in-out infinite alternate; /* Add glow animation */
+        }
+
+        @keyframes glowLoading {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0); /* No glow */
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Glow effect */
+            }
         }
 
         #main-content {
             display: none; /* Hide the main content initially */
+            padding-top: 80px; /* Add padding to avoid overlap with fixed header */
         }
 
         header {
@@ -96,7 +103,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
         }
 
         .profile-picture {
@@ -107,6 +113,7 @@
             overflow: hidden;
             border-radius: 50%; /* Circular shape */
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Glow effect */
+            border: 3px solid #fff; /* White border */
         }
 
         .profile-picture img {
@@ -271,7 +278,7 @@
                 <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
                 <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
                 <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
-                <a href="https://specs.gg/ngleeq.thai" target="_blank">Setting</a>
+                <a href="https://specs.gg/ngleeq.thai" target="_blank">My Settings</a>
                 <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Tracker</a>
             </div>
         </div>
@@ -286,10 +293,12 @@
             document.getElementById('loading-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
             document.getElementById('main-video').style.display = 'block';
+            document.getElementById('loading-video').style.display = 'none'; // Hide loading video after content is loaded
         }, 5000); // Adjust the timeout as needed
     </script>
 </body>
 </html>
+
 
 
 
