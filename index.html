@@ -54,7 +54,7 @@
         }
 
         #loading-screen h1 {
-            font-size: 6em;
+            font-size: 5em;
             color: #fff;
         }
 
@@ -67,6 +67,10 @@
             padding: 20px;
             text-align: center;
             animation: glowHeader 2s ease-in-out infinite alternate; /* Add glow animation */
+            position: fixed; /* Fix header position */
+            width: 100%;
+            top: 0;
+            z-index: 1000; /* Ensure it stays above other content */
         }
 
         @keyframes glowHeader {
@@ -92,6 +96,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
         }
 
         .profile-picture {
@@ -118,7 +123,7 @@
         }
 
         .intro p {
-            font-size: 2.5em;
+            font-size: 3em; /*Title size*/
             line-height: 1.6;
         }
 
@@ -212,7 +217,7 @@
         @media (min-width: 768px) {
             /* Larger devices adjustments */
             header h1, .intro p, .links a {
-                font-size: 4em;
+                font-size: 3em;
             }
 
             .profile-picture {
@@ -224,7 +229,7 @@
             }
 
             .links a {
-                font-size: 1.5em;
+                font-size: 2em;
                 padding: 15px 30px;
             }
         }
@@ -245,14 +250,14 @@
     </video>
     <div id="main-content">
         <header>
-            <h1>ngleeqthai</h1>
+            <h1>Welcome to my world!</h1>
         </header>
         <div class="content">
             <div class="profile-picture">
                 <img src="4C7F5981-86C2-416D-9742-0EECAC5626B1 (1).jpeg" alt="Profile Picture">
             </div>            
             <div class="intro">
-                <h2>Welcome to my world !</h2>
+                <h2>ngleeqthai</h2>
                 <p>manh beo mup rup.</p>
             </div>
             <div class="links">
@@ -306,17 +311,6 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
