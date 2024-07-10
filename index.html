@@ -53,6 +53,13 @@
             font-size: 5em;
             color: #fff;
             animation: glowLoading 2s ease-in-out infinite alternate; /* Add glow animation */
+            position: relative; /* Ensure position is set for animation */
+        }
+
+        #ellipsis {
+            position: absolute; /* Ensure position for the ellipsis */
+            right: 0;
+            top: 0;
         }
 
         @keyframes glowLoading {
@@ -254,7 +261,7 @@
         <video id="loading-video" autoplay muted loop>
             <source src="Untitled video - Made with Clipchamp.mp4" type="video/mp4">
         </video>
-        <h1>Loading<span id="ellipsis"></span></h1>
+        <h1>Loading<span id="ellipsis">...</span></h1>
     </div>
     <video id="video-background" autoplay muted loop>
         <source src="y2mate.com - Clove LIVE wallpaper 4K  Valorant Episode 8  Act 2  Homescreen_1080p.mp4" type="video/mp4">
@@ -298,6 +305,7 @@
     </script>
 </body>
 </html>
+
 
 
 
