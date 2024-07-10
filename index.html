@@ -100,10 +100,24 @@
         }
 
         .profile-picture {
+            position: relative; /* For positioning the pseudo-element */
             max-width: 30vw; /* Responsive size */
             margin-bottom: 20px;
             border-radius: 50%; /* Circular shape */
             overflow: hidden; /* Ensure image does not overflow */
+        }
+
+        .profile-picture::before {
+            content: '';
+            position: absolute;
+            top: -10px; /* Adjust distance from the image */
+            left: -10px; /* Adjust distance from the image */
+            width: calc(100% + 20px); /* Adjust border size */
+            height: calc(100% + 20px); /* Adjust border size */
+            border-radius: 50%; /* Circular border */
+            border: 3px solid #fff; /* Border color and size */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Glow effect */
+            z-index: -1; /* Place behind the image */
         }
 
         .profile-picture img {
@@ -313,9 +327,6 @@
     </script>
 </body>
 </html>
-
-
-
 
 
 
