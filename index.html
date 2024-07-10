@@ -149,7 +149,7 @@
             background: linear-gradient(135deg, #774c96, #59198e);
             color: #fff;
             text-decoration: none;
-            font-size: 6em; /* Responsive font size */
+            font-size: 3em; /* Responsive font size */
             border-radius: 3px;
             border: 2px solid transparent;
             position: relative;
@@ -225,8 +225,32 @@
             }
         }
 
+        @media (max-width: 1200px) {
+            /* Larger devices adjustments */
+            .content {
+                max-width: 80%; /* Adjust max-width for larger screens */
+            }
+
+            .links a {
+                font-size: 2em; /* Decrease font size */
+                padding: 10px 20px; /* Adjust padding */
+            }
+        }
+
         @media (max-width: 767px) {
             /* Smaller devices adjustments */
+            .content {
+                max-width: 90%; /* Adjust max-width for smaller screens */
+            }
+
+            .profile-picture {
+                max-width: 40vw; /* Increase profile picture size on smaller screens */
+            }
+
+            .intro p {
+                font-size: 2em; /* Decrease font size */
+            }
+
             .links {
                 margin-top: 10px; /* Reduce margin top for links */
             }
@@ -314,6 +338,7 @@
     </script>
 </body>
 </html>
+
 
 
 
