@@ -65,12 +65,14 @@
         header {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
-            text-align: center;
             animation: glowHeader 2s ease-in-out infinite alternate; /* Add glow animation */
             position: fixed; /* Fix header position */
             width: 100%;
             top: 0;
             z-index: 1000; /* Ensure it stays above other content */
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
         }
 
         @keyframes glowHeader {
@@ -340,3 +342,4 @@
     </script>
 </body>
 </html>
+
