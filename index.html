@@ -101,26 +101,18 @@
 
         .profile-picture {
             position: relative;
-            max-width: 30vw; /* Responsive size */
+            width: 150px; /* Fixed size */
+            height: 150px; /* Fixed size */
             margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 50%; /* Circular shape */
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Glow effect */
         }
 
         .profile-picture img {
             width: 100%;
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Glow effect */
-        }
-
-        .profile-picture::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 3px solid rgba(255, 255, 255, 0.5); /* Border with transparency */
-            border-radius: 50%; /* Circle shape */
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Glow effect */
+            height: 100%;
+            object-fit: cover;
         }
 
         .intro {
@@ -137,7 +129,7 @@
         }
 
         .intro p {
-            font-size: 3em; /*Title size*/
+            font-size: 3em; /* Title size */
             line-height: 1.6;
         }
 
@@ -235,7 +227,8 @@
             }
 
             .profile-picture {
-                max-width: 150px;
+                width: 200px; /* Larger size */
+                height: 200px; /* Larger size */
             }
 
             .intro {
@@ -275,8 +268,28 @@
                 <p>manh beo mup rup.</p>
             </div>
             <div class="links">
-                <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook
-
+                <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
+                <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
+                <a href="https://specs.gg/ngleeq.thai" target="_blank">Setting</a>
+                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Tracker</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Follow me on social media</p>
+        <img src="Valorant_Full_Logo.svg.png" alt="Valorant Logo" class="valorant-logo">
+    </footer>
+    <script>
+        // Simulate loading process
+        setTimeout(function() {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('main-video').style.display = 'block';
+        }, 5000); // Adjust the timeout as needed
+    </script>
+</body>
+</html>
 
 
 
