@@ -36,7 +36,7 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            animation: glowLoading 2s ease-in-out infinite alternate; /* Add glow animation to loading screen */
+            animation: glowLoading 2s ease-in-out infinite alternate; /* Add glow animation */
         }
 
         @keyframes glowLoading {
@@ -55,7 +55,7 @@
 
         #main-content {
             display: none; /* Hide the main content initially */
-            padding-top: 80px; /* Adjust padding to account for fixed header */
+            padding-top: 80px; /* Add padding to avoid overlap with fixed header */
         }
 
         header {
@@ -243,7 +243,7 @@
         <video id="loading-video" autoplay muted loop>
             <source src="Untitled video - Made with Clipchamp.mp4" type="video/mp4">
         </video>
-        <h1>Loading<span id="ellipsis"></span></h1>
+        <h1>Loading<span id="ellipsis">...</span></h1>
     </div>
     <video id="video-background" autoplay muted loop>
         <source src="y2mate.com - Clove LIVE wallpaper 4K  Valorant Episode 8  Act 2  Homescreen_1080p.mp4" type="video/mp4">
@@ -251,10 +251,10 @@
     <video id="main-video" autoplay muted loop>
         <source src="y2mate.com - Clove LIVE wallpaper 4K  Valorant Episode 8  Act 2  Homescreen_1080p.mp4" type="video/mp4">
     </video>
-    <header>
-        <h1>Welcome to my world!</h1>
-    </header>
     <div id="main-content">
+        <header>
+            <h1>Welcome to my world!</h1>
+        </header>
         <div class="content">
             <div class="profile-picture">
                 <img src="4C7F5981-86C2-416D-9742-0EECAC5626B1 (1).jpeg" alt="Profile Picture">
@@ -286,6 +286,7 @@
     </script>
 </body>
 </html>
+
 
 
 
