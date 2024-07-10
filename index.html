@@ -97,9 +97,10 @@
             flex-direction: column;
             align-items: center;
             margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
-            max-width: 90%; /* Limit content width */
+            max-width: 1000px; /* Limit content width */
             margin-left: auto;
             margin-right: auto;
+            width: 90%; /* Adjust width as needed */
         }
 
         .profile-picture {
@@ -134,7 +135,7 @@
         }
 
         .intro p {
-            font-size: 2em; /* Adjusted font size */
+            font-size: 3em; /*Title size*/
             line-height: 1.6;
         }
 
@@ -149,7 +150,7 @@
             background: linear-gradient(135deg, #774c96, #59198e);
             color: #fff;
             text-decoration: none;
-            font-size: 2em; /* Adjusted font size */
+            font-size: 3em; /* Responsive font size */
             border-radius: 3px;
             border: 2px solid transparent;
             position: relative;
@@ -229,15 +230,15 @@
             /* Larger devices adjustments */
             .content {
                 width: 90%;
-                max-width: 100%;
+                max-width: 1000px;
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
             /* Smaller devices adjustments */
             .content {
                 width: 90%;
-                max-width: 100%;
+                max-width: 90%;
             }
 
             .profile-picture {
@@ -245,7 +246,7 @@
             }
 
             .intro p {
-                font-size: 1.5em; /* Decrease font size */
+                font-size: 2em; /* Decrease font size */
             }
 
             .links {
@@ -253,7 +254,7 @@
             }
 
             .links a {
-                font-size: 1.2em; /* Decrease font size */
+                font-size: 1.5em; /* Decrease font size */
                 padding: 10px 20px; /* Adjust padding */
             }
         }
@@ -278,52 +279,64 @@
         </header>
         <div class="content">
             <div class="profile-picture">
-                <img src="4C7F598C-BC2A-414C-B0EC-FC0F2F1164A5 (1).jpg" alt="Profile Picture">
-            </div>
+                <img src="4C7F5981-86C2-416D-9742-0EECAC5626B1 (1).jpeg" alt="Profile Picture">
+            </div>            
             <div class="intro">
-                <h2>I'm ngleeqthai</h2>
-                <p>Welcome to my profile page! Here you can find links to my social media and other resources.</p>
+                <h2>ngleeqthai</h2>
+                <p>manh beo mup rup.</p>
             </div>
             <div class="links">
                 <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
                 <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
                 <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
-                <a href="https://specs.gg/ngleeq.thai" target="_blank">Setting</a>
-                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Tracker</a>
+                <a href="https://specs.gg/ngleeq.thai" target="_blank">My Settings</a>
+                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Valorant Tracker</a>
             </div>
         </div>
         <footer>
-            <p>&copy; 2024 ngleeqthai</p>
-            <img src="valorant-logo.png" alt="Valorant Logo" class="valorant-logo">
+            <p>&copy; WWWWWWWWWWWWWWW</p>
         </footer>
     </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var loadingScreen = document.getElementById("loading-screen");
-            var mainContent = document.getElementById("main-content");
-            var loadingVideo = document.getElementById("loading-video");
-            var mainVideo = document.getElementById("main-video");
+            // Show and start loading video from the 3rd second instantly
+            const loadingVideo = document.getElementById("loading-video");
+            loadingVideo.currentTime = 3; // Start from the 3rd second
+            loadingVideo.style.display = "block"; // Show loading video
+            loadingVideo.play(); // Start playing loading video
 
-            loadingVideo.play();
-
+            // Hide the loading screen and show the video background and main content after 6 seconds
             setTimeout(function() {
-                loadingScreen.style.display = "none";
-                mainContent.style.display = "block";
-                mainVideo.style.display = "block";
-                mainVideo.play();
-            }, 5000); // Adjust the duration as needed
+                document.getElementById("loading-screen").style.display = "none";
+                document.getElementById("loading-video").style.display = "none"; // Hide loading video
+                document.getElementById("video-background").style.filter = "none"; // Remove blur effect
+                document.getElementById("main-video").style.display = "block"; // Display main video
+                document.getElementById("main-video").play(); // Play main video
+                document.getElementById("main-content").style.display = "block";
+            }, 6000); // 6000 milliseconds = 6 seconds
 
-            var ellipsis = document.getElementById("ellipsis");
-            var dots = 0;
-
-            setInterval(function() {
-                dots = (dots + 1) % 4;
-                ellipsis.innerHTML = ".".repeat(dots);
-            }, 500);
+            // Ellipsis animation (now faster, every 166 milliseconds)
+            const ellipsis = document.getElementById('ellipsis');
+            let count = 0;
+            setInterval(() => {
+                count++;
+                if (count === 1) {
+                    ellipsis.textContent = '';
+                } else if (count === 2) {
+                    ellipsis.textContent = '.';
+                } else if (count === 3) {
+                    ellipsis.textContent = '..';
+                } else if (count === 4) {
+                    ellipsis.textContent = '...';
+                    count = 0;
+                }
+            }, 166); // Change every 0.166 seconds (166 milliseconds)
         });
     </script>
 </body>
 </html>
+
 
 
 
