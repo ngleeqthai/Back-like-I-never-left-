@@ -222,36 +222,15 @@
             }
         }
 
-        @media (min-width: 768px) {
-            /* Larger devices adjustments */
-            header h1, .intro p, .links a {
-                font-size: 3em;
-            }
-
-            .profile-picture {
-                max-width: 150px;
-            }
-
-            .intro {
-                max-width: 600px;
+        @media (max-width: 767px) {
+            /* Smaller devices adjustments */
+            .links {
+                margin-top: 10px; /* Reduce margin top for links */
             }
 
             .links a {
-                font-size: 2em;
-                padding: 15px 30px;
-       
-        @media (max-width: 767px) {
-    /* Smaller devices adjustments */
-    .links {
-        margin-top: 10px; /* Reduce margin top for links */
-    }
-
-    .links a {
-        font-size: 0.5em; /* Decrease font size */
-        padding: 5px 10px; /* Adjust padding */
-    }
-}
-
+                font-size: 1.5em; /* Decrease font size */
+                padding: 10px 20px; /* Adjust padding */
             }
         }
     </style>
@@ -332,7 +311,6 @@
     </script>
 </body>
 </html>
-
 
 
 
