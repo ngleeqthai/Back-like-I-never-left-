@@ -97,7 +97,8 @@
             flex-direction: column;
             align-items: center;
             margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
-            max-width: 800px; /* Limit max width for larger screens */
+            width: 90%; /* Limit content width */
+            max-width: 1200px; /* Maximum content width */
             margin-left: auto;
             margin-right: auto;
         }
@@ -228,19 +229,16 @@
         @media (max-width: 1200px) {
             /* Larger devices adjustments */
             .content {
-                max-width: 80%; /* Adjust max-width for larger screens */
-            }
-
-            .links a {
-                font-size: 2em; /* Decrease font size */
-                padding: 10px 20px; /* Adjust padding */
+                width: 90%;
+                max-width: 1000px;
             }
         }
 
         @media (max-width: 767px) {
             /* Smaller devices adjustments */
             .content {
-                max-width: 90%; /* Adjust max-width for smaller screens */
+                width: 90%;
+                max-width: 90%;
             }
 
             .profile-picture {
@@ -338,6 +336,7 @@
     </script>
 </body>
 </html>
+
 
 
 
