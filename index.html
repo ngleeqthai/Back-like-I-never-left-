@@ -18,9 +18,11 @@
             font-family: 'Brams';
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Prevent horizontal scroll */
+            overflow-y: auto; /* Enable vertical scroll */
+            overflow-x: hidden; /* Prevent horizontal scroll */
             color: #fff;
             position: relative; /* For layering content over the video */
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
         }
 
         #loading-screen {
@@ -304,6 +306,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 
