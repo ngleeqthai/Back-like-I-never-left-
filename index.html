@@ -36,21 +36,16 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
+            animation: glowLoading 2s ease-in-out infinite alternate; /* Add glow animation to loading screen */
         }
 
-        #loading-video, #video-background, #main-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Crop and fit the video */
-            z-index: -1; /* Ensure the video is in the background */
-            pointer-events: none; /* Make the video non-interactive */
-        }
-
-        #loading-video, #main-video {
-            display: none; /* Hide loading video and main video initially */
+        @keyframes glowLoading {
+            0% {
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0); /* No glow */
+            }
+            100% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Glow effect */
+            }
         }
 
         #loading-screen h1 {
@@ -59,12 +54,8 @@
         }
 
         #main-content {
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 120px; /* Adjusted margin top to accommodate fixed header */
+            display: none; /* Hide the main content initially */
+            padding-top: 80px; /* Adjust padding to account for fixed header */
         }
 
         header {
@@ -95,17 +86,29 @@
             color: #fff;
         }
 
+        .content {
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .profile-picture {
-            max-width: 30vw; /* Responsive size */
+            position: relative;
+            width: 150px; /* Fixed size */
+            height: 150px; /* Fixed size */
             margin-bottom: 20px;
-            position: relative; /* Ensure relative positioning */
+            overflow: hidden;
+            border-radius: 50%; /* Circular shape */
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.8); /* Pink/purple glow effect */
+            border: 3px solid #fff; /* White border */
         }
 
         .profile-picture img {
             width: 100%;
-            border-radius: 50%;
-            border: 8px solid #ff00ff; /* Pink/purple border */
-            box-shadow: 0 0 20px #ff00ff; /* Pink/purple glow */
+            height: 100%;
+            object-fit: cover;
         }
 
         .intro {
@@ -122,7 +125,7 @@
         }
 
         .intro p {
-            font-size: 3em; /*Title size*/
+            font-size: 3em; /* Title size */
             line-height: 1.6;
         }
 
@@ -186,10 +189,10 @@
 
         @keyframes glowFooter {
             0% {
-                box-shadow: 0 0 10px rgba(255, 255, 255, 0); /* No glow */
+                box-shadow: 0 0 10px rgba(255, 0, 255, 0); /* No glow */
             }
             100% {
-                box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Glow effect */
+                box-shadow: 0 0 20px rgba(255, 0, 255, 0.8); /* Glow effect */
             }
         }
 
@@ -220,7 +223,8 @@
             }
 
             .profile-picture {
-                max-width: 150px;
+                width: 200px; /* Larger size */
+                height: 200px; /* Larger size */
             }
 
             .intro {
@@ -264,20 +268,24 @@
                 <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
                 <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
                 <a href="https://specs.gg/ngleeq.thai" target="_blank">My Settings</a>
-                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">My Tracker</a>
+                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Tracker</a>
             </div>
         </div>
     </div>
     <footer>
-        <p>Designed with <img class="valorant-logo" src="Valorant 4K.png" alt="Valorant Logo"> by ngleeqthai</p>
+        <p>Follow me on social media</p>
+        <img src="Valorant_Full_Logo.svg.png" alt="Valorant Logo" class="valorant-logo">
     </footer>
+    <script>
+        // Simulate loading process
+        setTimeout(function() {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('main-video').style.display = 'block';
+        }, 5000); // Adjust the timeout as needed
+    </script>
 </body>
 </html>
-
-
-
-
-
 
 
 
