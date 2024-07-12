@@ -119,13 +119,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 4px solid transparent; /* Transparent border initially */
-            background: linear-gradient(blue, pink); /* Gradient background */
-            background-clip: padding-box; /* Ensure gradient is inside the border */
-            animation: rotateGradient 4s linear infinite; /* Rotating gradient */
         }
 
-        .profile-picture::before {
+        .profile-picture img {
+            width: 100%;
+            border-radius: 50%; /* Circular shape */
+        }
+
+        .profile-picture::after {
             content: '';
             position: absolute;
             top: -4px; /* Adjust for border thickness */
@@ -133,9 +134,10 @@
             right: -4px; /* Adjust for border thickness */
             bottom: -4px; /* Adjust for border thickness */
             border-radius: 50%;
-            background: linear-gradient(blue, pink); /* Gradient border */
+            border: 4px solid transparent;
+            background: linear-gradient(blue, pink) border-box;
             z-index: -1;
-            animation: rotateGradient 4s linear infinite; /* Rotating gradient */
+            animation: rotateGradient 4s linear infinite;
         }
 
         @keyframes rotateGradient {
@@ -145,11 +147,6 @@
             100% {
                 transform: rotate(360deg);
             }
-        }
-
-        .profile-picture img {
-            width: 100%;
-            border-radius: 50%; /* Circular shape */
         }
 
         .fire-animation {
