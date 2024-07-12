@@ -74,10 +74,7 @@
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
             animation: glowHeader 2s ease-in-out infinite alternate; /* Add glow animation */
-            position: fixed; /* Fix header position */
             width: 100%;
-            top: 0;
-            z-index: 1000; /* Ensure it stays above other content */
             display: flex; /* Use flexbox for centering */
             justify-content: center; /* Center horizontally */
             align-items: center; /* Center vertically */
@@ -195,13 +192,10 @@
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px;
             text-align: center;
-            position: fixed;
-            bottom: 0;
+            margin-top: auto; /* Push footer to the bottom of the page */
             width: 100%;
             animation: glowFooter 2s ease-in-out infinite alternate; /* Add glow animation */
-            transform: translate(0, 0); /* Ensure footer is initially in view */
-            transition: transform 0.3s ease-in-out; /* Smooth transition effect */
-            z-index: 1000; /* Ensure it's above other fixed elements */
+            z-index: 1000; /* Ensure it's above other content */
         }
 
         @keyframes glowFooter {
@@ -306,7 +300,7 @@
         </div>
     </div>
     <footer>
-        <p>&copy; WWWWWWWWWWWWWWW</p>
+        <p>&copy; WW</p>
     </footer>
 
     <script>
@@ -347,19 +341,6 @@
                 }
             }, 166); // Change every 0.166 seconds (166 milliseconds)
         });
-
-        // Smoothly move footer with scroll
-        window.addEventListener('scroll', function() {
-            const footer = document.querySelector('footer');
-            const scrollPosition = window.scrollY;
-            if (scrollPosition > 100) {
-                footer.style.transform = 'translateY(0)';
-            } else {
-                footer.style.transform = 'translateY(100%)';
-            }
-        });
     </script>
 </body>
 </html>
-
-
