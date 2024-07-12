@@ -126,17 +126,16 @@
             border-radius: 50%; /* Circular shape */
         }
 
-        .profile-picture::after {
+        .profile-picture::before {
             content: '';
             position: absolute;
-            top: -4px; /* Adjust for border thickness */
-            left: -4px; /* Adjust for border thickness */
-            right: -4px; /* Adjust for border thickness */
-            bottom: -4px; /* Adjust for border thickness */
+            top: -10px; /* Adjust for border thickness */
+            left: -10px; /* Adjust for border thickness */
+            right: -10px; /* Adjust for border thickness */
+            bottom: -10px; /* Adjust for border thickness */
             border-radius: 50%;
             border: 4px solid transparent;
             background: linear-gradient(blue, pink) border-box;
-            z-index: -1;
             animation: rotateGradient 4s linear infinite;
         }
 
@@ -146,35 +145,6 @@
             }
             100% {
                 transform: rotate(360deg);
-            }
-        }
-
-        .fire-animation {
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: transparent; /* Transparent background */
-            z-index: -1; /* Behind the profile picture */
-            pointer-events: none; /* Make sure it doesn't interfere with clicks */
-            animation: fireAnimation 1s infinite ease-in-out alternate-reverse; /* Fire animation */
-            border-radius: 50%; /* Ensure it's circular */
-            box-shadow: 0 0 50px 20px #ff4500, inset 0 0 50px 20px #ff4500; /* Fire-like glow */
-        }
-
-        @keyframes fireAnimation {
-            0% {
-                transform: scale(1) translateY(-10%);
-                opacity: 0.8;
-            }
-            50% {
-                transform: scale(1.05) translateY(-15%);
-                opacity: 0.9;
-            }
-            100% {
-                transform: scale(1) translateY(-10%);
-                opacity: 0.8;
             }
         }
 
@@ -326,7 +296,6 @@
         <div class="content">
             <div class="profile-picture">
                 <img src="449678496_1016121393551164_244338954380778760_n.jpg" alt="Profile Picture">
-                <div class="fire-animation"></div>
             </div>            
             <div class="intro">
                 <h2>ngleeqthai</h2>
