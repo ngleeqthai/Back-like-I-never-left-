@@ -119,8 +119,32 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 0 20px rgba(204, 94, 255, 0.8); /* Glow effect */
-            border: 4px solid rgba(204, 94, 255, 0.8); /* Border color */
+            border: 4px solid transparent; /* Transparent border initially */
+            background: linear-gradient(blue, pink); /* Gradient background */
+            background-clip: padding-box; /* Ensure gradient is inside the border */
+            animation: rotateGradient 4s linear infinite; /* Rotating gradient */
+        }
+
+        .profile-picture::before {
+            content: '';
+            position: absolute;
+            top: -4px; /* Adjust for border thickness */
+            left: -4px; /* Adjust for border thickness */
+            right: -4px; /* Adjust for border thickness */
+            bottom: -4px; /* Adjust for border thickness */
+            border-radius: 50%;
+            background: linear-gradient(blue, pink); /* Gradient border */
+            z-index: -1;
+            animation: rotateGradient 4s linear infinite; /* Rotating gradient */
+        }
+
+        @keyframes rotateGradient {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .profile-picture img {
@@ -249,33 +273,15 @@
         }
 
         @keyframes slideIn {
-            0% {
-                right: -100%; /* Start off-screen to the right */
-                opacity: 0;
-            }
-            100% {
-                right: 0; /* Slide in to the right */
+            to {
+                right: 0;
                 opacity: 1;
             }
         }
 
-        @media (max-width: 1200px) {
-            /* Larger devices adjustments */
-            .content {
-                width: 90%;
-                max-width: 1000px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            /* Smaller devices adjustments */
-            .content {
-                width: 90%;
-                max-width: 90%;
-            }
-
+        @media (max-width: 600px) {
             .profile-picture {
-                max-width: 40vw; /* Increase profile picture size on smaller screens */
+                width: 50vw; /* Increase profile picture size on smaller screens */
             }
 
             .intro p {
