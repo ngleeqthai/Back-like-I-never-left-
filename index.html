@@ -60,6 +60,7 @@
 
         #main-content {
             display: none; /* Hide the main content initially */
+            padding-bottom: 50px; /* Add space for the footer */
         }
 
         header {
@@ -198,16 +199,10 @@
             padding: 10px;
             text-align: center;
             width: 100%;
-            animation: glowFooter 2s ease-in-out infinite alternate; /* Add glow animation */
-        }
-
-        @keyframes glowFooter {
-            0% {
-                box-shadow: 0 0 10px rgba(204, 94, 255, 0); /* No glow (pink/purple glow) */
-            }
-            100% {
-                box-shadow: 0 0 20px rgba(204, 94, 255, 0.8); /* Glow effect (pink/purple glow) */
-            }
+            position: fixed; /* Stick footer to the bottom */
+            bottom: 0;
+            left: 0;
+            z-index: 1000; /* Ensure it stays above other content */
         }
 
         footer p {
@@ -264,6 +259,11 @@
 
             header h1 {
                 text-align: center; /* Center align header text */
+            }
+
+            footer {
+                position: static; /* Ensure footer is static on smaller screens */
+                margin-top: 20px; /* Add margin to separate from content */
             }
         }
     </style>
@@ -347,5 +347,3 @@
     </script>
 </body>
 </html>
-
-
