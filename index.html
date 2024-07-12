@@ -310,11 +310,14 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Show and start loading video from the 3rd second instantly
-            const loadingVideo = document.getElementById("loading-video");
-            loadingVideo.currentTime = 3; // Start from the 3rd second
-            loadingVideo.style.display = "block"; // Show loading video
-            loadingVideo.play(); // Start playing loading video
+            // Delay before starting loading video
+            setTimeout(function() {
+                // Show and start loading video from the 3rd second instantly
+                const loadingVideo = document.getElementById("loading-video");
+                loadingVideo.currentTime = 3; // Start from the 3rd second
+                loadingVideo.style.display = "block"; // Show loading video
+                loadingVideo.play(); // Start playing loading video
+            }, 100); // 100 milliseconds delay before showing loading video
 
             // Hide the loading screen and show the video background and main content after 6 seconds
             setTimeout(function() {
@@ -346,3 +349,4 @@
     </script>
 </body>
 </html>
+
