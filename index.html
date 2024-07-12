@@ -192,13 +192,6 @@
             right: -100%;
             opacity: 0;
             animation: slideIn 0.5s forwards;
-            display: flex;
-            align-items: center; /* Center align contents */
-        }
-
-        .links a img {
-            width: 30px; /* Adjust size of the logo */
-            margin-right: 10px; /* Add space between logo and text */
         }
 
         .links a:nth-child(1) {
@@ -288,12 +281,18 @@
             }
 
             .links a {
-                font-size: 2em; /* Decrease font size for links */
-                padding: 5px 8px; /* Adjust padding for links */
+                font-size: 1.5em; /* Decrease font size */
+                padding: 10px 20px; /* Adjust padding */
             }
 
-            .valorant-logo {
-                width: 80px; /* Decrease logo size */
+            header h1 {
+                text-align: center; /* Center align header text */
+                width: auto; /* Reset width to auto */
+            }
+
+            footer {
+                position: static; /* Ensure footer is static on smaller screens */
+                margin-top: 20px; /* Add margin to separate from content */
             }
         }
     </style>
@@ -319,21 +318,21 @@
             <div class="profile-picture">
                 <img src="448969993_1005954630665614_4173930242296266244_n.jpg" alt="Profile Picture">
                 <div class="fire-animation"></div>
-            </div>
+            </div>            
             <div class="intro">
                 <h2>ngleeqthai</h2>
                 <p>social media:</p>
             </div>
             <div class="links">
-                <a href="https://www.facebook.com/ngleeqthai/" target="_blank"><img src="Facebook Logo.png" alt="Facebook Logo"> Facebook</a>
-                <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank"><img src="Instagram Logo.png" alt="Instagram Logo"> Instagram</a>
-                <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank"><img src="Steam Logo.png" alt="Steam Logo"> Steam</a>
-                <a href="https://specs.gg/ngleeq.thai" target="_blank"><img src="settings-logo.png" alt="Specs Logo.png"> My Settings</a>
-                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank"><img src="Valorant Logo.png" alt="Valorant Logo" class="valorant-logo"> Valorant Tracker</a>
+                <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
+                <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
+                <a href="https://specs.gg/ngleeq.thai" target="_blank">My Settings</a>
+                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Valorant Tracker</a>
             </div>
         </div>
         <footer>
-            <p>&copy; WWWMWWWWWWWWWWWW</p>
+            <p>&copy; WWWWWWWWWWWWWWW</p>
         </footer>
     </div>
 
