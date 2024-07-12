@@ -134,20 +134,45 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background-image: radial-gradient(circle, #ff66cc, #ff3366, #ff0066);
-            animation: fireAnimation 0.5s ease-in-out infinite alternate;
+            background: radial-gradient(circle, rgba(255, 102, 204, 0.5), rgba(255, 51, 102, 0.3), rgba(255, 0, 102, 0.2));
             border-radius: 50%;
             z-index: -1;
+            opacity: 0.8;
+            animation: fireAnimation 1.5s ease-in-out infinite alternate;
         }
 
         @keyframes fireAnimation {
             0% {
                 transform: scale(1);
-                opacity: 0.7;
+                opacity: 0.6;
             }
             100% {
-                transform: scale(1.4);
+                transform: scale(1.5);
                 opacity: 1;
+            }
+        }
+
+        .fire-layer {
+            position: absolute;
+            top: -60%;
+            left: -60%;
+            width: 220%;
+            height: 220%;
+            background: radial-gradient(circle, rgba(255, 200, 0, 0.5), rgba(255, 140, 0, 0.3), rgba(255, 69, 0, 0.2));
+            border-radius: 50%;
+            z-index: -2;
+            opacity: 0.5;
+            animation: fireLayerAnimation 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes fireLayerAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+            100% {
+                transform: scale(1.8);
+                opacity: 0.9;
             }
         }
 
@@ -303,27 +328,29 @@
         <h1>Loading<span id="ellipsis"></span></h1>
     </div>
     <video id="video-background" autoplay muted loop playsinline>
-        <source src="Main.mp4" type="video/mp4">
+        <source src="background.mp4" type="video/mp4">
     </video>
     <video id="main-video" autoplay muted loop playsinline>
-        <source src="Main.mp4" type="video/mp4">
+        <source src="main.mp4" type="video/mp4">
     </video>
     <div id="main-content">
         <header>
-            <h1>Ah, skill issue I'm afraid.</h1>
+            <h1>My Profile</h1>
         </header>
         <div class="content">
             <div class="profile-picture">
-                <img src="449678496_1016121393551164_244338954380778760_n.jpg" alt="Profile Picture">
+                <img src="profile_picture.jpg" alt="Profile Picture">
                 <div class="fire-animation"></div>
-            </div>            
+                <div class="fire-layer"></div>
+            </div>
             <div class="intro">
-                <h2>ngleeqthai</h2>
-                <p>social media:</p>
+                <h2>Welcome to My Profile</h2>
+                <p>Here are my links:</p>
             </div>
             <div class="links">
-                <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
-                <a href="https://www.instagram.com/_ngleeqthai_/?hl=en" target="_blank">Instagram</a>
+                <a href="https://discord.gg/XH5Hy5fMZn" target="_blank">Discord</a>
+                <a href="https://twitter.com/ngleeqthai_" target="_blank">Twitter</a>
+                <a href="https://www.instagram.com/ngleeqthai_/?hl=en" target="_blank">Instagram</a>
                 <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
                 <a href="https://specs.gg/ngleeq.thai" target="_blank">My Settings</a>
                 <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Valorant Tracker</a>
