@@ -18,6 +18,7 @@
             font-family: 'Brams';
             margin: 0;
             padding: 0;
+            overflow-y: auto; /* Enable vertical scroll */
             overflow-x: hidden; /* Prevent horizontal scroll */
             color: #fff;
             position: relative; /* For layering content over the video */
@@ -58,23 +59,17 @@
         }
 
         #main-content {
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
-            max-width: 1000px; /* Limit content width */
-            margin-left: auto;
-            margin-right: auto;
-            width: 90%; /* Adjust width as needed */
+            display: none; /* Hide the main content initially */
         }
 
         header {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
             animation: glowHeader 2s ease-in-out infinite alternate; /* Add glow animation */
+            position: fixed; /* Fix header position */
             width: 100%;
+            top: 0;
+            z-index: 1000; /* Ensure it stays above other content */
             display: flex; /* Use flexbox for centering */
             justify-content: center; /* Center horizontally */
             align-items: center; /* Center vertically */
@@ -98,7 +93,16 @@
         }
 
         .content {
-            margin-bottom: 120px; /* Adjusted margin to accommodate the footer */
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
+            max-width: 1000px; /* Limit content width */
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%; /* Adjust width as needed */
         }
 
         .profile-picture {
@@ -133,12 +137,13 @@
         }
 
         .intro p {
-            font-size: 4em; /* Title size */
+            font-size: 4em; /*Title size*/
             line-height: 1;
             margin-bottom: 0;
         }
 
         .links {
+            margin-top: 0px; /* Adjusted margin to bring links closer to social media text */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -192,10 +197,8 @@
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px;
             text-align: center;
-            margin-top: auto; /* Push footer to the bottom of the page */
             width: 100%;
             animation: glowFooter 2s ease-in-out infinite alternate; /* Add glow animation */
-            z-index: 1000; /* Ensure it's above other content */
         }
 
         @keyframes glowFooter {
@@ -298,10 +301,10 @@
                 <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Valorant Tracker</a>
             </div>
         </div>
+        <footer>
+            <p>&copy; WW</p>
+        </footer>
     </div>
-    <footer>
-        <p>&copy; WW</p>
-    </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -344,3 +347,4 @@
     </script>
 </body>
 </html>
+
