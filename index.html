@@ -23,6 +23,7 @@
             color: #fff;
             position: relative; /* For layering content over the video */
             min-height: 100vh; /* Ensure body takes at least full viewport height */
+            background-color: #1f1f1f; /* Set a dark background color */
         }
 
         #loading-screen {
@@ -78,10 +79,10 @@
 
         @keyframes glowHeader {
             0% {
-                box-shadow: 0 0 10px rgba(204, 94, 255, 0); /* No glow (pink/purple glow) */
+                box-shadow: 0 0 10px rgba(204, 94, 255, 0); /* No glow */
             }
             100% {
-                box-shadow: 0 0 20px rgba(204, 94, 255, 0.8); /* Glow effect (pink/purple glow) */
+                box-shadow: 0 0 20px rgba(204, 94, 255, 0.8); /* Glow effect */
             }
         }
 
@@ -109,22 +110,45 @@
         }
 
         .profile-picture {
+            position: relative;
             max-width: 12vw; /* Responsive size */
             margin-top: 4px;
             margin-bottom: 4px;
             border-radius: 50%; /* Circular shape */
             overflow: hidden; /* Ensure image does not overflow */
-            position: relative; /* Position relative for absolute border */
-            box-shadow: 0 0 20px rgba(204, 94, 255, 0.8); /* Glow effect (pink/purple glow) */
-            border: 4px solid rgba(204, 94, 255, 0.8); /* Pink/purple border */
             display: flex;
             justify-content: center;
             align-items: center;
+            box-shadow: 0 0 20px rgba(204, 94, 255, 0.8); /* Glow effect */
+            border: 4px solid rgba(204, 94, 255, 0.8); /* Border color */
         }
 
         .profile-picture img {
             width: 100%;
             border-radius: 50%; /* Circular shape */
+        }
+
+        .fire-animation {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: radial-gradient(circle, #ff66cc, #993399); /* Pink/purple gradient */
+            animation: fireAnimation 2s ease-in-out infinite alternate;
+            border-radius: 50%; /* Ensure it's circular */
+            z-index: -1; /* Behind the profile picture */
+        }
+
+        @keyframes fireAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.1);
+                opacity: 0;
+            }
         }
 
         .intro {
@@ -293,6 +317,7 @@
         <div class="content">
             <div class="profile-picture">
                 <img src="448969993_1005954630665614_4173930242296266244_n.jpg" alt="Profile Picture">
+                <div class="fire-animation"></div>
             </div>            
             <div class="intro">
                 <h2>ngleeqthai</h2>
