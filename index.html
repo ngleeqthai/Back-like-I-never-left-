@@ -18,7 +18,6 @@
             font-family: 'Brams';
             margin: 0;
             padding: 0;
-            overflow-y: auto; /* Enable vertical scroll */
             overflow-x: hidden; /* Prevent horizontal scroll */
             color: #fff;
             position: relative; /* For layering content over the video */
@@ -59,7 +58,16 @@
         }
 
         #main-content {
-            display: none; /* Hide the main content initially */
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
+            max-width: 1000px; /* Limit content width */
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%; /* Adjust width as needed */
         }
 
         header {
@@ -93,16 +101,7 @@
         }
 
         .content {
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
-            max-width: 1000px; /* Limit content width */
-            margin-left: auto;
-            margin-right: auto;
-            width: 90%; /* Adjust width as needed */
+            margin-bottom: 120px; /* Adjusted margin to accommodate the footer */
         }
 
         .profile-picture {
@@ -137,13 +136,12 @@
         }
 
         .intro p {
-            font-size: 4em; /*Title size*/
+            font-size: 4em; /* Title size */
             line-height: 1;
             margin-bottom: 0;
         }
 
         .links {
-            margin-top: 0px; /* Adjusted margin to bring links closer to social media text */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -201,6 +199,9 @@
             bottom: 0;
             width: 100%;
             animation: glowFooter 2s ease-in-out infinite alternate; /* Add glow animation */
+            transform: translate(0, 0); /* Ensure footer is initially in view */
+            transition: transform 0.3s ease-in-out; /* Smooth transition effect */
+            z-index: 1000; /* Ensure it's above other fixed elements */
         }
 
         @keyframes glowFooter {
@@ -303,10 +304,10 @@
                 <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Valorant Tracker</a>
             </div>
         </div>
-        <footer>
-            <p>&copy; WWWWWWWWWWWWWWW</p>
-        </footer>
     </div>
+    <footer>
+        <p>&copy; WWWWWWWWWWWWWWW</p>
+    </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -346,6 +347,18 @@
                 }
             }, 166); // Change every 0.166 seconds (166 milliseconds)
         });
+
+        // Smoothly move footer with scroll
+        window.addEventListener('scroll', function() {
+            const footer = document.querySelector('footer');
+            const scrollPosition = window.scrollY;
+            if (scrollPosition > 100) {
+                footer.style.transform = 'translateY(0)';
+            } else {
+                footer.style.transform = 'translateY(100%)';
+            }
+        });
     </script>
 </body>
 </html>
+
