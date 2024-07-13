@@ -23,6 +23,7 @@
             color: #fff;
             position: relative;
             min-height: 100vh;
+            background-color: #000;
         }
 
         #loading-screen {
@@ -112,6 +113,7 @@
             position: relative;
             width: 200px;
             height: 200px;
+            overflow: hidden; /* Ensure circles stay within container */
         }
 
         .profile-picture {
@@ -123,6 +125,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 2; /* Ensure it's above the circles */
         }
 
         .profile-picture img {
@@ -132,11 +135,13 @@
 
         .circle {
             position: absolute;
-            top: -30px;
-            left: -30px;
-            width: calc(100% + 60px);
-            height: calc(100% + 60px);
-            filter: url(#wavy) blur(1px);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 0, 255, 0.5); /* Pink color with transparency */
+            mix-blend-mode: overlay; /* Overlay blend mode for color */
+            z-index: 1; /* Ensure it's above the profile picture */
         }
 
         .circle:before {
@@ -365,19 +370,19 @@
     </video>
     <div id="main-content">
         <header>
-            <h1>Welcome to my world</h1>
+            <h1>Ah, skill issue I'm afraid.</h1>
         </header>
         <div class="content">
             <div class="profile-picture-container">
                 <div class="circle"></div>
                 <div class="circle"></div>
                 <div class="profile-picture">
-                    <img src="https://pbs.twimg.com/media/GJh0tr7WwAAESbK.jpg:large" alt="Profile Picture">
+                    <img src="448969993_1005954630665614_4173930242296266244_n.jpg" alt="Profile Picture">
                 </div>
             </div>
             <div class="intro">
                 <h2>ngleeqthai</h2>
-                <p>Social Media Profiles:</p>
+                <p>social media:</p>
             </div>
             <div class="links">
                 <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
@@ -388,7 +393,7 @@
             </div>
         </div>
         <footer>
-            <p>&copy; ngleeqthai</p>
+            <p>&copy; WWWWWWWWWWWWWWW</p>
         </footer>
     </div>
 
