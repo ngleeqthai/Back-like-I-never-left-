@@ -18,12 +18,100 @@
             font-family: 'Brams';
             margin: 0;
             padding: 0;
-            overflow-y: auto; /* Enable vertical scroll */
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            color: #fff;
-            position: relative; /* For layering content over the video */
-            min-height: 100vh; /* Ensure body takes at least full viewport height */
-            background-color: #000;
+            overflow: hidden; /* Prevent scroll */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1f1f1f; /* Set a dark background color */
+        }
+
+        .profile-picture-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            filter: url(#wavy) blur(1px);
+        }
+
+        .circle:before, .circle:after {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 10px solid #FFF;
+            border-radius: 50%;
+            box-shadow: 0 0 50px #0F0,
+                        inset 0 0 50px #0F0;
+            -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0002);
+        }
+
+        .circle:before {
+            animation: animate 5s linear infinite;
+        }
+
+        .circle:after {
+            box-shadow: 0 0 50px #FFF,
+                        inset 0 0 50px #FFF;
+        }
+
+        .circle:nth-child(2):before {
+            animation-delay: -2.5s;
+        }
+
+        @keyframes animate {
+            0% {
+                box-shadow: 0 0 50px #0F0,
+                            inset 0 0 50px #0F0;
+                filter: hue-rotate(0deg);
+            }
+            20% {
+                box-shadow: 0 0 40px #0F0,
+                            inset 0 0 60px #0F0;
+            }
+            40% {
+                box-shadow: 0 0 40px #0F0,
+                            inset 0 0 80px #0F0;
+            }
+            60% {
+                box-shadow: 0 0 80px #0F0,
+                            inset 0 0 80px #0F0;
+            }
+            80% {
+                box-shadow: 0 0 100px #0F0,
+                            inset 0 0 100px #0F0;
+            }
+            100% {
+                box-shadow: 0 0 50px #0F0,
+                            inset 0 0 50px #0F0;
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        .profile-picture {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%; /* Circular shape */
+            overflow: hidden; /* Ensure image does not overflow */
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%; /* Circular shape */
+        }
+
+        svg {
+            width: 0;
+            height: 0;
         }
 
         #loading-screen {
@@ -79,10 +167,10 @@
 
         @keyframes glowHeader {
             0% {
-                box-shadow: 0 0 10px rgba(204, 94, 255, 0); /* No glow (pink/purple glow) */
+                box-shadow: 0 0 10px rgba(204, 94, 255, 0); /* No glow */
             }
             100% {
-                box-shadow: 0 0 20px rgba(204, 94, 255, 0.8); /* Glow effect (pink/purple glow) */
+                box-shadow: 0 0 20px rgba(204, 94, 255, 0.8); /* Glow effect */
             }
         }
 
@@ -109,37 +197,6 @@
             width: 90%; /* Adjust width as needed */
         }
 
-        .profile-picture {
-            position: relative; /* Relative position for absolute ring */
-            width: 200px; /* Fixed width for profile picture */
-            height: 200px; /* Fixed height for profile picture */
-            border-radius: 50%; /* Circular shape */
-            overflow: hidden; /* Ensure image does not overflow */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .profile-picture img {
-            width: 100%;
-            height: auto;
-            border-radius: 50%; /* Circular shape */
-            display: block;
-        }
-
-        /* Pink ring around the profile picture */
-        .profile-picture::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border: 5px solid #ff14ff; /* Pink ring */
-            border-radius: 50%;
-            z-index: 0;
-        }
-
         .intro {
             max-width: 90vw; /* Responsive size */
             padding: 20px;
@@ -149,12 +206,12 @@
         }
 
         .intro h2 {
-            font-size: 2em;
+            font-size: 3em;
             margin-top: 0px;
         }
 
         .intro p {
-            font-size: 3em; /*Title size*/
+            font-size: 4em; /* Title size */
             line-height: 1;
             margin-top: 5px;
             margin-bottom: 0px;
@@ -236,89 +293,73 @@
                 opacity: 1;
             }
         }
-
-        @media (max-width: 1200px) {
-            /* Larger devices adjustments */
-            .content {
-                width: 90%;
-                max-width: 1000px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            /* Smaller devices adjustments */
-            body {
-                padding: 10px; /* Add padding for small screens */
-            }
-
-            .content {
-                width: 100%;
-                max-width: 90%;
-            }
-
-            .profile-picture {
-                width: 40vw; /* Increase profile picture size on smaller screens */
-                height: 40vw; /* Maintain aspect ratio */
-            }
-
-            .intro p {
-                font-size: 2em; /* Decrease font size */
-            }
-
-            .links {
-                margin-top: 5px; /* Reduce margin top for links */
-            }
-
-            .links a {
-                font-size: 1.5em; /* Decrease font size */
-                padding: 10px 20px; /* Adjust padding */
-            }
-
-            header h1 {
-                text-align: center; /* Center align header text */
-                width: auto; /* Reset width to auto */
-            }
-
-            footer {
-                position: static; /* Ensure footer is static on smaller screens */
-                margin-top: 20px; /* Add margin to separate from content */
-            }
-        }
     </style>
 </head>
 <body>
     <div id="loading-screen">
-        <video id="loading-video" autoplay muted loop playsinline>
-            <source src="Loading.mp4" type="video/mp4">
+        <h1>Loading...</h1>
+    </div>
+
+    <div id="main-content">
+        <video id="video-background" autoplay muted loop>
+            <source src="YOUR_BACKGROUND_VIDEO.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
-        <h1>Loading<span id="ellipsis"></span></h1>
+
+        <header>
+            <h1>Welcome to My Page</h1>
+        </header>
+
+        <div class="content">
+            <div class="profile-picture-container">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="profile-picture">
+                    <img src="your-profile-picture.jpg" alt="Profile Picture">
+                </div>
+            </div>
+
+            <div class="intro">
+                <h2>Hello, I'm [Your Name]</h2>
+                <p>Follow me on social media</p>
+                <div class="links">
+                    <a href="https://twitter.com/YOUR_TWITTER" target="_blank">Twitter</a>
+                    <a href="https://instagram.com/YOUR_INSTAGRAM" target="_blank">Instagram</a>
+                    <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
+                    <a href="https://facebook.com/YOUR_FACEBOOK" target="_blank">Facebook</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2023 Your Name. All rights reserved.</p>
+        </footer>
     </div>
-    <video id="video-background" autoplay muted loop playsinline>
-        <source src="BackgroundVideo.mp4" type="video/mp4">
-    </video>
-    <header>
-        <h1>Welcome to my world</h1>
-    </header>
-    <div class="content">
-        <div class="profile-picture">
-            <img src="profile.jpg" alt="Profile Picture">
-        </div>
-        <div class="intro">
-            <h2>Hello, I'm ngleeqthai</h2>
-            <p>Valorant player and enthusiast.</p>
-        </div>
-        <div class="links">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Steam</a>
-            <a href="#">Tracker</a>
-        </div>
-    </div>
-    <footer>
-        <p>© 2024 ngleeqthai. All rights reserved.</p>
-    </footer>
+
+    <svg>
+        <filter id="wavy">
+            <feTurbulence x="0" y="0" baseFrequency="0.009" numOctaves="5" seed="2">
+                <animate attributeName="baseFrequency" dur="60s" values="0.02;0.005;0.02" repeatCount="indefinite"></animate>
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale="30"></feDisplacementMap>
+        </filter>
+    </svg>
+
     <script>
-        // JavaScript code can be added here if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const mainContent = document.getElementById('main-content');
+            const loadingVideo = document.getElementById('loading-video');
+            const mainVideo = document.getElementById('main-video');
+
+            setTimeout(function() {
+                loadingScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+                mainVideo.style.display = 'block';
+                loadingVideo.style.display = 'none';
+            }, 5000); // Adjust the duration as needed
+        });
     </script>
 </body>
 </html>
