@@ -18,11 +18,11 @@
             font-family: 'Brams';
             margin: 0;
             padding: 0;
-            overflow-y: auto; /* Enable vertical scroll */
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-y: auto;
+            overflow-x: hidden;
             color: #fff;
-            position: relative; /* For layering content over the video */
-            min-height: 100vh; /* Ensure body takes at least full viewport height */
+            position: relative;
+            min-height: 100vh;
         }
 
         #loading-screen {
@@ -44,13 +44,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Crop and fit the video */
-            z-index: -1; /* Ensure the video is in the background */
-            pointer-events: none; /* Make the video non-interactive */
+            object-fit: cover;
+            z-index: -1;
+            pointer-events: none;
         }
 
         #loading-video, #main-video {
-            display: none; /* Hide loading video and main video initially */
+            display: none;
         }
 
         #loading-screen h1 {
@@ -59,29 +59,29 @@
         }
 
         #main-content {
-            display: none; /* Hide the main content initially */
-            padding-bottom: 50px; /* Add space for the footer */
+            display: none;
+            padding-bottom: 50px;
         }
 
         header {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
-            animation: glowHeader 2s ease-in-out infinite alternate; /* Add glow animation */
-            position: fixed; /* Fix header position */
+            animation: glowHeader 2s ease-in-out infinite alternate;
+            position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000; /* Ensure it stays above other content */
-            display: flex; /* Use flexbox for centering */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         @keyframes glowHeader {
             0% {
-                box-shadow: 0 0 10px rgba(204, 94, 255, 0); /* No glow (pink/purple glow) */
+                box-shadow: 0 0 10px rgba(204, 94, 255, 0);
             }
             100% {
-                box-shadow: 0 0 20px rgba(204, 94, 255, 0.8); /* Glow effect (pink/purple glow) */
+                box-shadow: 0 0 20px rgba(204, 94, 255, 0.8);
             }
         }
 
@@ -91,8 +91,8 @@
             text-transform: normal;
             letter-spacing: 0px;
             color: #fff;
-            text-align: center; /* Center align header text */
-            width: 100%; /* Ensure text takes full width */
+            text-align: center;
+            width: 100%;
         }
 
         .content {
@@ -101,55 +101,43 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
-            max-width: 1000px; /* Limit content width */
+            margin-top: 80px;
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
-            width: 90%; /* Adjust width as needed */
+            width: 90%;
         }
 
         .profile-picture {
-            max-width: 12vw; /* Responsive size */
-            margin-top: 4px;
-            margin-bottom: 4px;
-            border-radius: 50%; /* Circular shape */
-            overflow: hidden; /* Ensure image does not overflow */
-            position: relative; /* Position relative for absolute border */
+            width: 200px;
+            height: 200px;
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: radial-gradient(circle, rgba(255,20,147,1) 0%, rgba(255,20,147,0) 70%);
         }
 
         .profile-picture img {
             width: 100%;
-            border-radius: 50%; /* Circular shape */
+            border-radius: 50%;
         }
 
-        .profile-picture:before, .profile-picture:after {
-            content: "";
+        .profile-frame {
             position: absolute;
             top: -10px;
             left: -10px;
-            width: calc(100% + 20px);
-            height: calc(100% + 20px);
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             box-shadow: 0 0 20px rgba(255, 20, 147, 0.8), 
                         0 0 30px rgba(255, 20, 147, 0.6), 
                         0 0 40px rgba(255, 20, 147, 0.4), 
                         0 0 50px rgba(255, 20, 147, 0.2);
             animation: wavyFire 2s linear infinite;
-        }
-
-        .profile-picture:after {
-            top: -20px;
-            left: -20px;
-            width: calc(100% + 40px);
-            height: calc(100% + 40px);
-            box-shadow: 0 0 40px rgba(255, 20, 147, 0.8), 
-                        0 0 50px rgba(255, 20, 147, 0.6), 
-                        0 0 60px rgba(255, 20, 147, 0.4), 
-                        0 0 70px rgba(255, 20, 147, 0.2);
-            animation: wavyFire 3s linear infinite;
+            z-index: -1;
         }
 
         @keyframes wavyFire {
@@ -158,7 +146,7 @@
         }
 
         .intro {
-            max-width: 90vw; /* Responsive size */
+            max-width: 90vw;
             padding: 20px;
             background-color: transparent;
             margin-bottom: 20px;
@@ -171,14 +159,14 @@
         }
 
         .intro p {
-            font-size: 3em; /*Title size*/
+            font-size: 3em;
             line-height: 1;
             margin-top: 5px;
             margin-bottom: 0px;
         }
 
         .links {
-            margin-top: 0px; /* Adjusted margin to bring links closer to social media text */
+            margin-top: 0px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -187,11 +175,11 @@
 
         .links a {
             margin: 8px;
-            padding: 5px 10px; /* Responsive padding */
+            padding: 5px 10px;
             background: linear-gradient(135deg, #774c96, #59198e);
             color: #fff;
             text-decoration: none;
-            font-size: 3em; /* Responsive font size */
+            font-size: 3em;
             border-radius: 3px;
             border: 2px solid transparent;
             position: relative;
@@ -233,10 +221,10 @@
             padding: 10px;
             text-align: center;
             width: 100%;
-            position: fixed; /* Stick footer to the bottom */
+            position: fixed;
             bottom: 0;
             left: 0;
-            z-index: 1000; /* Ensure it stays above other content */
+            z-index: 1000;
         }
 
         footer p {
@@ -250,17 +238,16 @@
 
         @keyframes slideIn {
             0% {
-                right: -100%; /* Start off-screen to the right */
+                right: -100%;
                 opacity: 0;
             }
             100% {
-                right: 0; /* Slide in to the right */
+                right: 0;
                 opacity: 1;
             }
         }
 
         @media (max-width: 1200px) {
-            /* Larger devices adjustments */
             .content {
                 width: 90%;
                 max-width: 1000px;
@@ -268,9 +255,8 @@
         }
 
         @media (max-width: 600px) {
-            /* Smaller devices adjustments */
             body {
-                padding: 10px; /* Add padding for small screens */
+                padding: 10px;
             }
 
             .content {
@@ -279,30 +265,30 @@
             }
 
             .profile-picture {
-                max-width: 40vw; /* Increase profile picture size on smaller screens */
+                max-width: 40vw;
             }
 
             .intro p {
-                font-size: 2em; /* Decrease font size */
+                font-size: 2em;
             }
 
             .links {
-                margin-top: 5px; /* Reduce margin top for links */
+                margin-top: 5px;
             }
 
             .links a {
-                font-size: 1.5em; /* Decrease font size */
-                padding: 10px 20px; /* Adjust padding */
+                font-size: 1.5em;
+                padding: 10px 20px;
             }
 
             header h1 {
-                text-align: center; /* Center align header text */
-                width: auto; /* Reset width to auto */
+                text-align: center;
+                width: auto;
             }
 
             footer {
-                position: static; /* Ensure footer is static on smaller screens */
-                margin-top: 20px; /* Add margin to separate from content */
+                position: static;
+                margin-top: 20px;
             }
         }
     </style>
@@ -327,6 +313,7 @@
         <div class="content">
             <div class="profile-picture">
                 <img src="448969993_1005954630665614_4173930242296266244_n.jpg" alt="Profile Picture">
+                <div class="profile-frame"></div>
             </div>            
             <div class="intro">
                 <h2>ngleeqthai</h2>
