@@ -118,7 +118,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 5px solid transparent; /* Initial transparent border */
         }
 
         .profile-picture img {
@@ -126,36 +125,27 @@
             border-radius: 50%; /* Circular shape */
         }
 
-        .profile-picture:before, .profile-picture:after {
-            content: "";
+        .profile-picture .animated-border {
             position: absolute;
-            top: -10px;
-            left: -10px;
-            width: calc(100% + 20px);
-            height: calc(100% + 20px);
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 5px solid transparent; /* Initial transparent border */
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.8), 
-                        0 0 30px rgba(255, 20, 147, 0.6), 
-                        0 0 40px rgba(255, 20, 147, 0.4), 
-                        0 0 50px rgba(255, 20, 147, 0.2);
-            animation: wavyFire 2s linear infinite;
+            z-index: 1;
+            animation: animateBorder 4s linear infinite;
         }
 
-        .profile-picture:after {
-            top: -20px;
-            left: -20px;
-            width: calc(100% + 40px);
-            height: calc(100% + 40px);
-            box-shadow: 0 0 40px rgba(255, 20, 147, 0.8), 
-                        0 0 50px rgba(255, 20, 147, 0.6), 
-                        0 0 60px rgba(255, 20, 147, 0.4), 
-                        0 0 70px rgba(255, 20, 147, 0.2);
-            animation: wavyFire 3s linear infinite;
-        }
-
-        @keyframes wavyFire {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes animateBorder {
+            0% {
+                transform: rotate(0deg);
+                box-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
+            }
+            100% {
+                transform: rotate(360deg);
+                box-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
+            }
         }
 
         .intro {
