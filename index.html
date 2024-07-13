@@ -18,12 +18,11 @@
             font-family: 'Brams';
             margin: 0;
             padding: 0;
-            overflow-y: auto;
-            overflow-x: hidden;
+            overflow-y: auto; /* Enable vertical scroll */
+            overflow-x: hidden; /* Prevent horizontal scroll */
             color: #fff;
-            position: relative;
-            min-height: 100vh;
-            background-color: #000;
+            position: relative; /* For layering content over the video */
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
         }
 
         #loading-screen {
@@ -45,13 +44,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            pointer-events: none;
+            object-fit: cover; /* Crop and fit the video */
+            z-index: -1; /* Ensure the video is in the background */
+            pointer-events: none; /* Make the video non-interactive */
         }
 
         #loading-video, #main-video {
-            display: none;
+            display: none; /* Hide loading video and main video initially */
         }
 
         #loading-screen h1 {
@@ -60,29 +59,29 @@
         }
 
         #main-content {
-            display: none;
-            padding-bottom: 50px;
+            display: none; /* Hide the main content initially */
+            padding-bottom: 50px; /* Add space for the footer */
         }
 
         header {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
-            animation: glowHeader 2s ease-in-out infinite alternate;
-            position: fixed;
+            animation: glowHeader 2s ease-in-out infinite alternate; /* Add glow animation */
+            position: fixed; /* Fix header position */
             width: 100%;
             top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            z-index: 1000; /* Ensure it stays above other content */
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
         }
 
         @keyframes glowHeader {
             0% {
-                box-shadow: 0 0 10px rgba(204, 94, 255, 0);
+                box-shadow: 0 0 10px rgba(204, 94, 255, 0); /* No glow (pink/purple glow) */
             }
             100% {
-                box-shadow: 0 0 20px rgba(204, 94, 255, 0.8);
+                box-shadow: 0 0 20px rgba(204, 94, 255, 0.8); /* Glow effect (pink/purple glow) */
             }
         }
 
@@ -92,8 +91,8 @@
             text-transform: normal;
             letter-spacing: 0px;
             color: #fff;
-            text-align: center;
-            width: 100%;
+            text-align: center; /* Center align header text */
+            width: 100%; /* Ensure text takes full width */
         }
 
         .content {
@@ -102,63 +101,64 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 80px;
-            max-width: 1000px;
+            margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
+            max-width: 1000px; /* Limit content width */
             margin-left: auto;
             margin-right: auto;
-            width: 90%;
-        }
-
-        .profile-picture-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            overflow: hidden; /* Ensure circles stay within container */
+            width: 90%; /* Adjust width as needed */
         }
 
         .profile-picture {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            overflow: hidden;
-            position: relative;
+            max-width: 12vw; /* Responsive size */
+            margin-top: 4px;
+            margin-bottom: 4px;
+            border-radius: 50%; /* Circular shape */
+            overflow: hidden; /* Ensure image does not overflow */
+            position: relative; /* Position relative for absolute border */
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 2; /* Ensure it's above the circles */
         }
 
         .profile-picture img {
             width: 100%;
-            border-radius: 50%;
+            border-radius: 50%; /* Circular shape */
         }
 
-        .circle {
+        .profile-picture:before, .profile-picture:after {
+            content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 20px solid transparent;
-            border-top-color: #ff00ff; /* Pink color */
+            top: -10px;
+            left: -10px;
+            width: calc(100% + 20px);
+            height: calc(100% + 20px);
             border-radius: 50%;
-            box-sizing: border-box;
-            animation: rotate 5s linear infinite;
-            z-index: 1; /* Ensure it's below profile picture */
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.8), 
+                        0 0 30px rgba(255, 20, 147, 0.6), 
+                        0 0 40px rgba(255, 20, 147, 0.4), 
+                        0 0 50px rgba(255, 20, 147, 0.2);
+            animation: wavyFire 2s linear infinite;
         }
 
-        .circle:nth-child(2) {
-            animation-direction: reverse; /* Reverse animation for the second circle */
+        .profile-picture:after {
+            top: -20px;
+            left: -20px;
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+            box-shadow: 0 0 40px rgba(255, 20, 147, 0.8), 
+                        0 0 50px rgba(255, 20, 147, 0.6), 
+                        0 0 60px rgba(255, 20, 147, 0.4), 
+                        0 0 70px rgba(255, 20, 147, 0.2);
+            animation: wavyFire 3s linear infinite;
         }
 
-        @keyframes rotate {
-            100% {
-                transform: rotate(360deg);
-            }
+        @keyframes wavyFire {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .intro {
-            max-width: 90vw;
+            max-width: 90vw; /* Responsive size */
             padding: 20px;
             background-color: transparent;
             margin-bottom: 20px;
@@ -171,14 +171,14 @@
         }
 
         .intro p {
-            font-size: 3em;
+            font-size: 3em; /*Title size*/
             line-height: 1;
             margin-top: 5px;
             margin-bottom: 0px;
         }
 
         .links {
-            margin-top: 0px;
+            margin-top: 0px; /* Adjusted margin to bring links closer to social media text */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -187,11 +187,11 @@
 
         .links a {
             margin: 8px;
-            padding: 5px 10px;
+            padding: 5px 10px; /* Responsive padding */
             background: linear-gradient(135deg, #774c96, #59198e);
             color: #fff;
             text-decoration: none;
-            font-size: 3em;
+            font-size: 3em; /* Responsive font size */
             border-radius: 3px;
             border: 2px solid transparent;
             position: relative;
@@ -233,10 +233,10 @@
             padding: 10px;
             text-align: center;
             width: 100%;
-            position: fixed;
+            position: fixed; /* Stick footer to the bottom */
             bottom: 0;
             left: 0;
-            z-index: 1000;
+            z-index: 1000; /* Ensure it stays above other content */
         }
 
         footer p {
@@ -250,60 +250,60 @@
 
         @keyframes slideIn {
             0% {
-                right: -100%;
+                right: -100%; /* Start off-screen to the right */
                 opacity: 0;
             }
             100% {
-                right: 0;
+                right: 0; /* Slide in to the right */
                 opacity: 1;
             }
         }
 
         @media (max-width: 1200px) {
+            /* Larger devices adjustments */
             .content {
                 width: 90%;
                 max-width: 1000px;
             }
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 600px) {
+            /* Smaller devices adjustments */
+            body {
+                padding: 10px; /* Add padding for small screens */
+            }
+
             .content {
-                width: 90%;
+                width: 100%;
                 max-width: 90%;
             }
 
-            .profile-picture-container {
-                width: 40vw;
-                height: 40vw;
+            .profile-picture {
+                max-width: 40vw; /* Increase profile picture size on smaller screens */
             }
 
             .intro p {
-                font-size: 2em;
+                font-size: 2em; /* Decrease font size */
             }
 
             .links {
-                margin-top: 5px;
+                margin-top: 5px; /* Reduce margin top for links */
             }
 
             .links a {
-                font-size: 1.5em;
-                padding: 10px 20px;
+                font-size: 1.5em; /* Decrease font size */
+                padding: 10px 20px; /* Adjust padding */
             }
 
             header h1 {
-                text-align: center;
-                width: auto;
+                text-align: center; /* Center align header text */
+                width: auto; /* Reset width to auto */
             }
 
             footer {
-                position: static;
-                margin-top: 20px;
+                position: static; /* Ensure footer is static on smaller screens */
+                margin-top: 20px; /* Add margin to separate from content */
             }
-        }
-
-        svg {
-            width: 0;
-            height: 0;
         }
     </style>
 </head>
@@ -325,13 +325,9 @@
             <h1>Ah, skill issue I'm afraid.</h1>
         </header>
         <div class="content">
-            <div class="profile-picture-container">
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="profile-picture">
-                    <img src="448969993_1005954630665614_4173930242296266244_n.jpg" alt="Profile Picture">
-                </div>
-            </div>
+            <div class="profile-picture">
+                <img src="448969993_1005954630665614_4173930242296266244_n.jpg" alt="Profile Picture">
+            </div>            
             <div class="intro">
                 <h2>ngleeqthai</h2>
                 <p>social media:</p>
@@ -345,39 +341,32 @@
             </div>
         </div>
         <footer>
-            <p>&copy; WW WWWWWWWWWWWWWWW</p>
+            <p>&copy; WWWWWWWWWWWWWWW</p>
         </footer>
     </div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <defs>
-            <filter id="wavy">
-                <feTurbulence x="0" y="0" baseFrequency="0.009" numOctaves="5" seed="2">
-                    <animate attributeName="baseFrequency" dur="60s" values="0.02;0.005;0.02" repeatCount="indefinite"></animate>
-                </feTurbulence>
-                <feDisplacementMap in="SourceGraphic" scale="30"></feDisplacementMap>
-            </filter>
-        </defs>
-    </svg>
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Delay before starting loading video
             setTimeout(function() {
+                // Show and start loading video from the 3rd second instantly
                 const loadingVideo = document.getElementById("loading-video");
-                loadingVideo.currentTime = 3;
-                loadingVideo.style.display = "block";
-                loadingVideo.play();
-            }, 3000);
+                loadingVideo.currentTime = 3; // Start from the 3rd second
+                loadingVideo.style.display = "block"; // Show loading video
+                loadingVideo.play(); // Start playing loading video
+            }, 3000); // 3000 milliseconds delay before showing loading video
 
+            // Hide the loading screen and show the video background and main content after 6 seconds from showing loading video
             setTimeout(function() {
                 document.getElementById("loading-screen").style.display = "none";
-                document.getElementById("loading-video").style.display = "none";
-                document.getElementById("video-background").style.filter = "none";
-                document.getElementById("main-video").style.display = "block";
-                document.getElementById("main-video").play();
+                document.getElementById("loading-video").style.display = "none"; // Hide loading video
+                document.getElementById("video-background").style.filter = "none"; // Remove blur effect
+                document.getElementById("main-video").style.display = "block"; // Display main video
+                document.getElementById("main-video").play(); // Play main video
                 document.getElementById("main-content").style.display = "block";
-            }, 9000);
+            }, 9000); // 9000 milliseconds = 3 seconds delay + 6 seconds
 
+            // Ellipsis animation (now faster, every 166 milliseconds)
             const ellipsis = document.getElementById('ellipsis');
             let count = 0;
             setInterval(() => {
@@ -392,7 +381,7 @@
                     ellipsis.textContent = '...';
                     count = 0;
                 }
-            }, 166);
+            }, 166); // Change every 0.166 seconds (166 milliseconds)
         });
     </script>
 </body>
