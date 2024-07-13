@@ -118,6 +118,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            border: 5px solid #ff14ff; /* Pink border */
         }
 
         .profile-picture img {
@@ -294,51 +295,6 @@
             footer {
                 position: static; /* Ensure footer is static on smaller screens */
                 margin-top: 20px; /* Add margin to separate from content */
-            }
-        }
-
-        /* Pink and glow pink border */
-        .profile-picture {
-            border: 5px solid #ff14ff; /* Pink border */
-        }
-
-        .profile-picture:before, .profile-picture:after {
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.8), 
-                        0 0 30px rgba(255, 20, 147, 0.6), 
-                        0 0 40px rgba(255, 20, 147, 0.4), 
-                        0 0 50px rgba(255, 20, 147, 0.2),
-                        0 0 10px #ff14ff; /* Glow pink effect */
-        }
-
-        .profile-picture:after {
-            box-shadow: 0 0 40px rgba(255, 20, 147, 0.8), 
-                        0 0 50px rgba(255, 20, 147, 0.6), 
-                        0 0 60px rgba(255, 20, 147, 0.4), 
-                        0 0 70px rgba(255, 20, 147, 0.2),
-                        0 0 20px #ff14ff; /* Glow pink effect */
-        }
-
-        /* Animated border */
-        .animated-border {
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border: 5px solid transparent;
-            border-radius: 50%;
-            z-index: 1;
-            animation: animateBorder 4s linear infinite;
-        }
-
-        @keyframes animateBorder {
-            0% {
-                transform: rotate(0deg);
-                box-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
-            }
-            100% {
-                transform: rotate(360deg);
-                box-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
             }
         }
     </style>
