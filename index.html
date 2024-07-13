@@ -133,10 +133,10 @@
             width: calc(100% + 20px);
             height: calc(100% + 20px);
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 
-                        0 0 30px rgba(255, 105, 180, 0.6), 
-                        0 0 40px rgba(255, 105, 180, 0.4), 
-                        0 0 50px rgba(255, 105, 180, 0.2);
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.8), 
+                        0 0 30px rgba(255, 20, 147, 0.6), 
+                        0 0 40px rgba(255, 20, 147, 0.4), 
+                        0 0 50px rgba(255, 20, 147, 0.2);
             animation: wavyFire 2s linear infinite;
         }
 
@@ -267,10 +267,14 @@
             }
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 600px) {
             /* Smaller devices adjustments */
+            body {
+                padding: 10px; /* Add padding for small screens */
+            }
+
             .content {
-                width: 90%;
+                width: 100%;
                 max-width: 90%;
             }
 
