@@ -18,11 +18,11 @@
             font-family: 'Brams';
             margin: 0;
             padding: 0;
-            overflow-y: auto; /* Enable vertical scroll */
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-y: auto;
+            overflow-x: hidden;
             color: #fff;
-            position: relative; /* For layering content over the video */
-            min-height: 100vh; /* Ensure body takes at least full viewport height */
+            position: relative;
+            min-height: 100vh;
         }
 
         #loading-screen {
@@ -44,13 +44,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Crop and fit the video */
-            z-index: -1; /* Ensure the video is in the background */
-            pointer-events: none; /* Make the video non-interactive */
+            object-fit: cover;
+            z-index: -1;
+            pointer-events: none;
         }
 
         #loading-video, #main-video {
-            display: none; /* Hide loading video and main video initially */
+            display: none;
         }
 
         #loading-screen h1 {
@@ -59,29 +59,29 @@
         }
 
         #main-content {
-            display: none; /* Hide the main content initially */
-            padding-bottom: 50px; /* Add space for the footer */
+            display: none;
+            padding-bottom: 50px;
         }
 
         header {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
-            animation: glowHeader 2s ease-in-out infinite alternate; /* Add glow animation */
-            position: fixed; /* Fix header position */
+            animation: glowHeader 2s ease-in-out infinite alternate;
+            position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000; /* Ensure it stays above other content */
-            display: flex; /* Use flexbox for centering */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         @keyframes glowHeader {
             0% {
-                box-shadow: 0 0 10px rgba(204, 94, 255, 0); /* No glow (pink/purple glow) */
+                box-shadow: 0 0 10px rgba(204, 94, 255, 0);
             }
             100% {
-                box-shadow: 0 0 20px rgba(204, 94, 255, 0.8); /* Glow effect (pink/purple glow) */
+                box-shadow: 0 0 20px rgba(204, 94, 255, 0.8);
             }
         }
 
@@ -91,8 +91,8 @@
             text-transform: normal;
             letter-spacing: 0px;
             color: #fff;
-            text-align: center; /* Center align header text */
-            width: 100%; /* Ensure text takes full width */
+            text-align: center;
+            width: 100%;
         }
 
         .content {
@@ -101,20 +101,25 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
-            max-width: 1000px; /* Limit content width */
+            margin-top: 80px;
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
-            width: 90%; /* Adjust width as needed */
+            width: 90%;
+        }
+
+        .profile-picture-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
         }
 
         .profile-picture {
-            max-width: 12vw; /* Responsive size */
-            margin-top: 4px;
-            margin-bottom: 4px;
-            border-radius: 50%; /* Circular shape */
-            overflow: hidden; /* Ensure image does not overflow */
-            position: relative; /* Position relative for absolute border */
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -122,53 +127,81 @@
 
         .profile-picture img {
             width: 100%;
-            border-radius: 50%; /* Circular shape */
+            border-radius: 50%;
         }
 
-        .wavy-ring {
+        .circle {
             position: absolute;
-            top: -10px;
-            left: -10px;
-            width: 100%;
-            height: 100%;
+            top: -30px;
+            left: -30px;
+            width: calc(100% + 60px);
+            height: calc(100% + 60px);
+            filter: url(#wavy) blur(1px);
+        }
+
+        .circle:before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+            border: 10px solid #FFF;
             border-radius: 50%;
-            box-shadow: 0 0 50px #FF69B4,
-                        inset 0 0 50px #FF69B4;
+            box-shadow: 0 0 50px #0F0,
+                        inset 0 0 50px #0F0;
+            -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0002);
             animation: animate 5s linear infinite;
-            filter: url(#wavy);
+        }
+
+        .circle:after {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+            border: 10px solid #FFF;
+            border-radius: 50%;
+            box-shadow: 0 0 50px #FFF,
+                        inset 0 0 50px #FFF;
+        }
+
+        .circle:nth-child(2):before {
+            animation-delay: -2.5s;
         }
 
         @keyframes animate {
             0% {
-                box-shadow: 0 0 50px #FF69B4,
-                            inset 0 0 50px #FF69B4;
+                box-shadow: 0 0 50px #0F0,
+                            inset 0 0 50px #0F0;
                 filter: hue-rotate(0deg);
             }
             20% {
-                box-shadow: 0 0 40px #FF69B4,
-                            inset 0 0 60px #FF69B4;
+                box-shadow: 0 0 40px #0F0,
+                            inset 0 0 60px #0F0;
             }
             40% {
-                box-shadow: 0 0 40px #FF69B4,
-                            inset 0 0 80px #FF69B4;
+                box-shadow: 0 0 40px #0F0,
+                            inset 0 0 80px #0F0;
             }
             60% {
-                box-shadow: 0 0 80px #FF69B4,
-                            inset 0 0 80px #FF69B4;
+                box-shadow: 0 0 80px #0F0,
+                            inset 0 0 80px #0F0;
             }
             80% {
-                box-shadow: 0 0 100px #FF69B4,
-                            inset 0 0 100px #FF69B4;
+                box-shadow: 0 0 100px #0F0,
+                            inset 0 0 100px #0F0;
             }
             100% {
-                box-shadow: 0 0 50px #FF69B4,
-                            inset 0 0 50px #FF69B4;
+                box-shadow: 0 0 50px #0F0,
+                            inset 0 0 50px #0F0;
                 filter: hue-rotate(360deg);
             }
         }
 
         .intro {
-            max-width: 90vw; /* Responsive size */
+            max-width: 90vw;
             padding: 20px;
             background-color: transparent;
             margin-bottom: 20px;
@@ -181,14 +214,14 @@
         }
 
         .intro p {
-            font-size: 3em; /*Title size*/
+            font-size: 3em;
             line-height: 1;
             margin-top: 5px;
             margin-bottom: 0px;
         }
 
         .links {
-            margin-top: 0px; /* Adjusted margin to bring links closer to social media text */
+            margin-top: 0px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -197,11 +230,11 @@
 
         .links a {
             margin: 8px;
-            padding: 5px 10px; /* Responsive padding */
+            padding: 5px 10px;
             background: linear-gradient(135deg, #774c96, #59198e);
             color: #fff;
             text-decoration: none;
-            font-size: 3em; /* Responsive font size */
+            font-size: 3em;
             border-radius: 3px;
             border: 2px solid transparent;
             position: relative;
@@ -243,10 +276,10 @@
             padding: 10px;
             text-align: center;
             width: 100%;
-            position: fixed; /* Stick footer to the bottom */
+            position: fixed;
             bottom: 0;
             left: 0;
-            z-index: 1000; /* Ensure it stays above other content */
+            z-index: 1000;
         }
 
         footer p {
@@ -260,17 +293,16 @@
 
         @keyframes slideIn {
             0% {
-                right: -100%; /* Start off-screen to the right */
+                right: -100%;
                 opacity: 0;
             }
             100% {
-                right: 0; /* Slide in to the right */
+                right: 0;
                 opacity: 1;
             }
         }
 
         @media (max-width: 1200px) {
-            /* Larger devices adjustments */
             .content {
                 width: 90%;
                 max-width: 1000px;
@@ -278,38 +310,43 @@
         }
 
         @media (max-width: 767px) {
-            /* Smaller devices adjustments */
             .content {
                 width: 90%;
                 max-width: 90%;
             }
 
-            .profile-picture {
-                max-width: 40vw; /* Increase profile picture size on smaller screens */
+            .profile-picture-container {
+                width: 40vw;
+                height: 40vw;
             }
 
             .intro p {
-                font-size: 2em; /* Decrease font size */
+                font-size: 2em;
             }
 
             .links {
-                margin-top: 5px; /* Reduce margin top for links */
+                margin-top: 5px;
             }
 
             .links a {
-                font-size: 1.5em; /* Decrease font size */
-                padding: 10px 20px; /* Adjust padding */
+                font-size: 1.5em;
+                padding: 10px 20px;
             }
 
             header h1 {
-                text-align: center; /* Center align header text */
-                width: auto; /* Reset width to auto */
+                text-align: center;
+                width: auto;
             }
 
             footer {
-                position: static; /* Ensure footer is static on smaller screens */
-                margin-top: 20px; /* Add margin to separate from content */
+                position: static;
+                margin-top: 20px;
             }
+        }
+
+        svg {
+            width: 0;
+            height: 0;
         }
     </style>
 </head>
@@ -331,10 +368,13 @@
             <h1>Ah, skill issue I'm afraid.</h1>
         </header>
         <div class="content">
-            <div class="profile-picture">
-                <div class="wavy-ring"></div>
-                <img src="448969993_1005954630665614_4173930242296266244_n.jpg" alt="Profile Picture">
-            </div>            
+            <div class="profile-picture-container">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="profile-picture">
+                    <img src="448969993_1005954630665614_4173930242296266244_n.jpg" alt="Profile Picture">
+                </div>
+            </div>
             <div class="intro">
                 <h2>ngleeqthai</h2>
                 <p>social media:</p>
@@ -355,36 +395,32 @@
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
         <defs>
             <filter id="wavy">
-                <feTurbulence x="0" y="0" baseFrequency="0.01" numOctaves="5" seed="2">
-                    <animate attributeName="baseFrequency" dur="30s" values="0.01;0.02;0.005" repeatCount="indefinite" />
+                <feTurbulence x="0" y="0" baseFrequency="0.009" numOctaves="5" seed="2">
+                    <animate attributeName="baseFrequency" dur="60s" values="0.02;0.005;0.02" repeatCount="indefinite"></animate>
                 </feTurbulence>
-                <feDisplacementMap in="SourceGraphic" scale="20" />
+                <feDisplacementMap in="SourceGraphic" scale="30"></feDisplacementMap>
             </filter>
         </defs>
     </svg>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Delay before starting loading video
             setTimeout(function() {
-                // Show and start loading video from the 3rd second instantly
                 const loadingVideo = document.getElementById("loading-video");
-                loadingVideo.currentTime = 3; // Start from the 3rd second
-                loadingVideo.style.display = "block"; // Show loading video
-                loadingVideo.play(); // Start playing loading video
-            }, 3000); // 3000 milliseconds delay before showing loading video
+                loadingVideo.currentTime = 3;
+                loadingVideo.style.display = "block";
+                loadingVideo.play();
+            }, 3000);
 
-            // Hide the loading screen and show the video background and main content after 6 seconds from showing loading video
             setTimeout(function() {
                 document.getElementById("loading-screen").style.display = "none";
-                document.getElementById("loading-video").style.display = "none"; // Hide loading video
-                document.getElementById("video-background").style.filter = "none"; // Remove blur effect
-                document.getElementById("main-video").style.display = "block"; // Display main video
-                document.getElementById("main-video").play(); // Play main video
+                document.getElementById("loading-video").style.display = "none";
+                document.getElementById("video-background").style.filter = "none";
+                document.getElementById("main-video").style.display = "block";
+                document.getElementById("main-video").play();
                 document.getElementById("main-content").style.display = "block";
-            }, 9000); // 9000 milliseconds = 3 seconds delay + 6 seconds
+            }, 9000);
 
-            // Ellipsis animation (now faster, every 166 milliseconds)
             const ellipsis = document.getElementById('ellipsis');
             let count = 0;
             setInterval(() => {
@@ -399,7 +435,7 @@
                     ellipsis.textContent = '...';
                     count = 0;
                 }
-            }, 166); // Change every 0.166 seconds (166 milliseconds)
+            }, 166);
         });
     </script>
 </body>
