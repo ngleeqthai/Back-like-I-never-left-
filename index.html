@@ -118,12 +118,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 10px solid transparent; /* Pink border */
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.8), 
-                        0 0 30px rgba(255, 20, 147, 0.6), 
-                        0 0 40px rgba(255, 20, 147, 0.4), 
-                        0 0 50px rgba(255, 20, 147, 0.2);
-            animation: wavyFire 2s linear infinite;
+            border: 5px solid transparent; /* Initial transparent border */
+        }
+
+        .profile-picture img {
+            width: 100%;
+            border-radius: 50%; /* Circular shape */
         }
 
         .profile-picture:before, .profile-picture:after {
@@ -156,11 +156,6 @@
         @keyframes wavyFire {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        .profile-picture img {
-            width: 100%;
-            border-radius: 50%; /* Circular shape */
         }
 
         .intro {
@@ -256,73 +251,160 @@
 
         @keyframes slideIn {
             0% {
-                right: -100%;
+                right: -100%; /* Start off-screen to the right */
                 opacity: 0;
             }
             100% {
-                right: 0;
+                right: 0; /* Slide in to the right */
                 opacity: 1;
             }
+        }
+
+        @media (max-width: 1200px) {
+            /* Larger devices adjustments */
+            .content {
+                width: 90%;
+                max-width: 1000px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            /* Smaller devices adjustments */
+            body {
+                padding: 10px; /* Add padding for small screens */
+            }
+
+            .content {
+                width: 100%;
+                max-width: 90%;
+            }
+
+            .profile-picture {
+                max-width: 40vw; /* Increase profile picture size on smaller screens */
+            }
+
+            .intro p {
+                font-size: 2em; /* Decrease font size */
+            }
+
+            .links {
+                margin-top: 5px; /* Reduce margin top for links */
+            }
+
+            .links a {
+                font-size: 1.5em; /* Decrease font size */
+                padding: 10px 20px; /* Adjust padding */
+            }
+
+            header h1 {
+                text-align: center; /* Center align header text */
+                width: auto; /* Reset width to auto */
+            }
+
+            footer {
+                position: static; /* Ensure footer is static on smaller screens */
+                margin-top: 20px; /* Add margin to separate from content */
+            }
+        }
+
+        /* Pink and glow pink border */
+        .profile-picture {
+            border: 5px solid #ff14ff; /* Pink border */
+        }
+
+        .profile-picture:before, .profile-picture:after {
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.8), 
+                        0 0 30px rgba(255, 20, 147, 0.6), 
+                        0 0 40px rgba(255, 20, 147, 0.4), 
+                        0 0 50px rgba(255, 20, 147, 0.2),
+                        0 0 10px #ff14ff; /* Glow pink effect */
+        }
+
+        .profile-picture:after {
+            box-shadow: 0 0 40px rgba(255, 20, 147, 0.8), 
+                        0 0 50px rgba(255, 20, 147, 0.6), 
+                        0 0 60px rgba(255, 20, 147, 0.4), 
+                        0 0 70px rgba(255, 20, 147, 0.2),
+                        0 0 20px #ff14ff; /* Glow pink effect */
         }
     </style>
 </head>
 <body>
     <div id="loading-screen">
-        <video id="loading-video" autoplay muted loop>
-            <source src="Main_Video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+        <video id="loading-video" autoplay muted loop playsinline>
+            <source src="Loading.mp4" type="video/mp4">
         </video>
+        <h1>Loading<span id="ellipsis"></span></h1>
     </div>
-
-    <video id="main-video" autoplay muted loop>
-        <source src="video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
+    <video id="video-background" autoplay muted loop playsinline>
+        <source src="Main.mp4" type="video/mp4">
     </video>
-
-    <header>
-        <h1>Welcome to my world!</h1>
-    </header>
-
-    <div id="main-content" class="content">
-        <div class="profile-picture">
-            <img src="448969993_1005954630665614_4173930242296266244_n.jpg" alt="Profile Picture">
+    <video id="main-video" autoplay muted loop playsinline>
+        <source src="Main.mp4" type="video/mp4">
+    </video>
+    <div id="main-content">
+        <header>
+            <h1>Ah, skill issue I'm afraid.</h1>
+        </header>
+        <div class="content">
+            <div class="profile-picture">
+                <img src="448969993_1005954630665614_4173930242296266244_n.jpg" alt="Profile Picture">
+            </div>            
+            <div class="intro">
+                <h2>ngleeqthai</h2>
+                <p>social media:</p>
+            </div>
+            <div class="links">
+                <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
+                <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
+                <a href="https://specs.gg/ngleeq.thai" target="_blank">My Settings</a>
+                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Valorant Tracker</a>
+            </div>
         </div>
-
-        <div class="intro">
-            <h2>Hi, I'm ngleeqthai!</h2>
-            <p>I'm a web developer and Valorant enthusiast.</p>
-        </div>
-
-        <div class="links">
-            <a href="https://www.facebook.com/ngleeqthai/">Facebook</a>
-            <a href="https://www.instagram.com/_ngleeq.thai/?hl=en">Instagram</a>
-            <a href="https://steamcommunity.com/id/ngleeqthai0212/">Steam</a>
-            <a href="https://specs.gg/ngleeq.thai">Setting</a>
-            <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview">Tracker</a>
-        </div>
+        <footer>
+            <p>&copy; WW WWW WWW WW WW WWW WWW WWW</p>
+        </footer>
     </div>
-
-    <footer>
-        <p>Powered by <img src="valorant-logo.png" alt="Valorant Logo" class="valorant-logo"></p>
-    </footer>
 
     <script>
-        // JavaScript for loading screen and content animation
-        document.addEventListener("DOMContentLoaded", function () {
-            // Hide loading screen
-            setTimeout(function () {
-                document.getElementById('loading-screen').style.display = 'none';
-                document.getElementById('loading-video').pause(); // Pause loading video
-                document.getElementById('main-video').style.display = 'block'; // Show main video
-                document.getElementById('main-video').play(); // Play main video
-                document.getElementById('main-content').style.display = 'block'; // Show main content
-            }, 5000); // Adjust time delay as needed
+        document.addEventListener("DOMContentLoaded", function() {
+            // Delay before starting loading video
+            setTimeout(function() {
+                // Show and start loading video from the 3rd second instantly
+                const loadingVideo = document.getElementById("loading-video");
+                loadingVideo.currentTime = 3; // Start from the 3rd second
+                loadingVideo.style.display = "block"; // Show loading video
+                loadingVideo.play(); // Start playing loading video
+            }, 3000); // 3000 milliseconds delay before showing loading video
+
+            // Hide the loading screen and show the video background and main content after 6 seconds from showing loading video
+            setTimeout(function() {
+                document.getElementById("loading-screen").style.display = "none";
+                document.getElementById("loading-video").style.display = "none"; // Hide loading video
+                document.getElementById("video-background").style.filter = "none"; // Remove blur effect
+                document.getElementById("main-video").style.display = "block"; // Display main video
+                document.getElementById("main-video").play(); // Play main video
+                document.getElementById("main-content").style.display = "block";
+            }, 9000); // 9000 milliseconds = 3 seconds delay + 6 seconds
+
+            // Ellipsis animation (now faster, every 166 milliseconds)
+            const ellipsis = document.getElementById('ellipsis');
+            let count = 0;
+            setInterval(() => {
+                count++;
+                if (count === 1) {
+                    ellipsis.textContent = '';
+                } else if (count === 2) {
+                    ellipsis.textContent = '.';
+                } else if (count === 3) {
+                    ellipsis.textContent = '..';
+                } else if (count === 4) {
+                    ellipsis.textContent = '...';
+                    count = 0;
+                }
+            }, 166); // Change every 0.166 seconds (166 milliseconds)
         });
     </script>
 </body>
 </html>
-
-@keyframes wavyFire {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
