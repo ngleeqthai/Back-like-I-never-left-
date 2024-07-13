@@ -139,69 +139,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 0, 255, 0.5); /* Pink color with transparency */
-            mix-blend-mode: overlay; /* Overlay blend mode for color */
-            z-index: 1; /* Ensure it's above the profile picture */
-        }
-
-        .circle:before {
-            content: "";
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            right: 30px;
-            bottom: 30px;
-            border: 10px solid #FFF;
+            border: 20px solid transparent;
+            border-top-color: #ff00ff; /* Pink color */
             border-radius: 50%;
-            box-shadow: 0 0 50px #0F0,
-                        inset 0 0 50px #0F0;
-            -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0002);
-            animation: animate 5s linear infinite;
+            box-sizing: border-box;
+            animation: rotate 5s linear infinite;
+            z-index: 1; /* Ensure it's below profile picture */
         }
 
-        .circle:after {
-            content: "";
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            right: 30px;
-            bottom: 30px;
-            border: 10px solid #FFF;
-            border-radius: 50%;
-            box-shadow: 0 0 50px #FFF,
-                        inset 0 0 50px #FFF;
+        .circle:nth-child(2) {
+            animation-direction: reverse; /* Reverse animation for the second circle */
         }
 
-        .circle:nth-child(2):before {
-            animation-delay: -2.5s;
-        }
-
-        @keyframes animate {
-            0% {
-                box-shadow: 0 0 50px #0F0,
-                            inset 0 0 50px #0F0;
-                filter: hue-rotate(0deg);
-            }
-            20% {
-                box-shadow: 0 0 40px #0F0,
-                            inset 0 0 60px #0F0;
-            }
-            40% {
-                box-shadow: 0 0 40px #0F0,
-                            inset 0 0 80px #0F0;
-            }
-            60% {
-                box-shadow: 0 0 80px #0F0,
-                            inset 0 0 80px #0F0;
-            }
-            80% {
-                box-shadow: 0 0 100px #0F0,
-                            inset 0 0 100px #0F0;
-            }
+        @keyframes rotate {
             100% {
-                box-shadow: 0 0 50px #0F0,
-                            inset 0 0 50px #0F0;
-                filter: hue-rotate(360deg);
+                transform: rotate(360deg);
             }
         }
 
@@ -393,7 +345,7 @@
             </div>
         </div>
         <footer>
-            <p>&copy; WWWWWWWWWWWWWWW</p>
+            <p>&copy; WW WWWWWWWWWWWWWWW</p>
         </footer>
     </div>
 
