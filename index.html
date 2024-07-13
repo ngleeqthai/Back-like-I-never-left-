@@ -1,338 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
-    <style>
-        @font-face {
-            font-family: 'Brams';
-            src: url('BRAMS.woff2') format('woff2'),
-                 url('BRAMS.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
+.profile-picture {
+    max-width: 12vw; /* Responsive size */
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-radius: 50%; /* Circular shape */
+    overflow: hidden; /* Ensure image does not overflow */
+    position: relative; /* Position relative for absolute border */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        body {
-            font-family: 'Brams';
-            margin: 0;
-            padding: 0;
-            overflow-y: auto; /* Enable vertical scroll */
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            color: #fff;
-            position: relative; /* For layering content over the video */
-            min-height: 100vh; /* Ensure body takes at least full viewport height */
-        }
+.profile-picture img {
+    width: 100%;
+    border-radius: 50%; /* Circular shape */
+}
 
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
+.profile-picture:before,
+.profile-picture:after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.8), 
+                0 0 30px rgba(255, 20, 147, 0.6), 
+                0 0 40px rgba(255, 20, 147, 0.4), 
+                0 0 50px rgba(255, 20, 147, 0.2);
+    animation: wavyFire 2s linear infinite;
+}
 
-        #loading-video, #video-background, #main-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Crop and fit the video */
-            z-index: -1; /* Ensure the video is in the background */
-            pointer-events: none; /* Make the video non-interactive */
-        }
+.profile-picture:after {
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    box-shadow: 0 0 40px rgba(255, 20, 147, 0.8), 
+                0 0 50px rgba(255, 20, 147, 0.6), 
+                0 0 60px rgba(255, 20, 147, 0.4), 
+                0 0 70px rgba(255, 20, 147, 0.2);
+    animation: wavyFire 3s linear infinite;
+}
 
-        #loading-video, #main-video {
-            display: none; /* Hide loading video and main video initially */
-        }
-
-        #loading-screen h1 {
-            font-size: 5em;
-            color: #fff;
-        }
-
-        #main-content {
-            display: none; /* Hide the main content initially */
-            padding-bottom: 50px; /* Add space for the footer */
-        }
-
-        header {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            animation: glowHeader 2s ease-in-out infinite alternate; /* Add glow animation */
-            position: fixed; /* Fix header position */
-            width: 100%;
-            top: 0;
-            z-index: 1000; /* Ensure it stays above other content */
-            display: flex; /* Use flexbox for centering */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-        }
-
-        @keyframes glowHeader {
-            0% {
-                box-shadow: 0 0 10px rgba(204, 94, 255, 0); /* No glow (pink/purple glow) */
-            }
-            100% {
-                box-shadow: 0 0 20px rgba(204, 94, 255, 0.8); /* Glow effect (pink/purple glow) */
-            }
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2em;
-            text-transform: normal;
-            letter-spacing: 0px;
-            color: #fff;
-            text-align: center; /* Center align header text */
-            width: 100%; /* Ensure text takes full width */
-        }
-
-        .content {
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
-            max-width: 1000px; /* Limit content width */
-            margin-left: auto;
-            margin-right: auto;
-            width: 90%; /* Adjust width as needed */
-        }
-
-        .profile-picture {
-            max-width: 12vw; /* Responsive size */
-            margin-top: 4px;
-            margin-bottom: 4px;
-            border-radius: 50%; /* Circular shape */
-            overflow: hidden; /* Ensure image does not overflow */
-            position: relative; /* Position relative for absolute border */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 10px solid pink; /* Pink border */
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.8), 
-                        0 0 30px rgba(255, 20, 147, 0.6), 
-                        0 0 40px rgba(255, 20, 147, 0.4), 
-                        0 0 50px rgba(255, 20, 147, 0.2); /* Glow effect */
-            animation: wavyFire 2s linear infinite;
-        }
-
-        .profile-picture img {
-            width: 100%;
-            border-radius: 50%; /* Circular shape */
-        }
-
-        @keyframes wavyFire {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .intro {
-            max-width: 90vw; /* Responsive size */
-            padding: 20px;
-            background-color: transparent;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .intro h2 {
-            font-size: 2em;
-            margin-top: 0px;
-        }
-
-        .intro p {
-            font-size: 3em; /*Title size*/
-            line-height: 1;
-            margin-top: 5px;
-            margin-bottom: 0px;
-        }
-
-        .links {
-            margin-top: 0px; /* Adjusted margin to bring links closer to social media text */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .links a {
-            margin: 8px;
-            padding: 5px 10px; /* Responsive padding */
-            background: linear-gradient(135deg, #774c96, #59198e);
-            color: #fff;
-            text-decoration: none;
-            font-size: 3em; /* Responsive font size */
-            border-radius: 3px;
-            border: 2px solid transparent;
-            position: relative;
-            right: -100%;
-            opacity: 0;
-            animation: slideIn 0.5s forwards;
-        }
-
-        .links a:nth-child(1) {
-            animation-delay: 1.1s;
-        }
-
-        .links a:nth-child(2) {
-            animation-delay: 1.2s;
-        }
-
-        .links a:nth-child(3) {
-            animation-delay: 1.3s;
-        }
-
-        .links a:nth-child(4) {
-            animation-delay: 1.4s;
-        }
-
-        .links a:nth-child(5) {
-            animation-delay: 1.5s;
-        }
-
-        .links a:hover {
-            background: linear-gradient(135deg, #59198e, #774c96);
-            border-color: #fff;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-
-        footer {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            text-align: center;
-            width: 100%;
-            position: fixed; /* Stick footer to the bottom */
-            bottom: 0;
-            left: 0;
-            z-index: 1000; /* Ensure it stays above other content */
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        .valorant-logo {
-            width: 100px;
-            margin-top: 20px;
-        }
-
-        @keyframes slideIn {
-            0% {
-                right: -100%; /* Start off-screen to the right */
-                opacity: 0;
-            }
-            100% {
-                right: 0; /* Slide in to the right */
-                opacity: 1;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            /* Larger devices adjustments */
-            .content {
-                width: 90%;
-                max-width: 1000px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            /* Smaller devices adjustments */
-            body {
-                padding: 10px; /* Add padding for small screens */
-            }
-
-            .content {
-                width: 100%;
-                max-width: 90%;
-            }
-
-            .profile-picture {
-                max-width: 40vw; /* Increase profile picture size on smaller screens */
-            }
-
-            .intro p {
-                font-size: 2em; /* Decrease font size */
-            }
-
-            .links {
-                margin-top: 5px; /* Reduce margin top for links */
-            }
-
-            .links a {
-                font-size: 1.5em; /* Decrease font size */
-                padding: 10px 20px; /* Adjust padding */
-            }
-
-            header h1 {
-                text-align: center; /* Center align header text */
-                width: auto; /* Reset width to auto */
-            }
-
-            footer {
-                position: static; /* Ensure footer is static on smaller screens */
-                margin-top: 20px; /* Add margin to separate from content */
-            }
-        }
-    </style>
-</head>
-<body>
-    <div id="loading-screen">
-        <h1>Loading...</h1>
-    </div>
-    
-    <video id="loading-video" src="loading.mp4" preload="auto" autoplay loop></video>
-    <video id="video-background" src="background.mp4" preload="auto" autoplay muted loop></video>
-    <video id="main-video" src="main.mp4" preload="auto" autoplay muted loop></video>
-
-    <header>
-        <h1>Welcome to my world</h1>
-    </header>
-
-    <div class="content">
-        <div class="profile-picture">
-            <img src="profile.jpg" alt="Profile Picture">
-        </div>
-
-        <div class="intro">
-            <h2>Hi, I'm Ng Lee Qthai</h2>
-            <p>A Valorant fan and web enthusiast</p>
-        </div>
-
-        <div class="links">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">Steam</a>
-            <a href="#">Website</a>
-            <a href="#">Twitter</a>
-        </div>
-    </div>
-
-    <footer>
-        <p>Designed with <img src="valorant-logo.png" alt="Valorant Logo" class="valorant-logo"> in mind</p>
-    </footer>
-
-    <script>
-        // Simulate loading process
-        window.addEventListener('load', function () {
-            const loadingScreen = document.getElementById('loading-screen');
-            const mainContent = document.getElementById('main-content');
-
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-                mainContent.style.display = 'block';
-            }, 3000); // Adjust the time as needed
-        });
-    </script>
-</body>
-</html>
+@keyframes wavyFire {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
