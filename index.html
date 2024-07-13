@@ -118,38 +118,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            border: 10px solid pink; /* Pink border */
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.8), 
+                        0 0 30px rgba(255, 20, 147, 0.6), 
+                        0 0 40px rgba(255, 20, 147, 0.4), 
+                        0 0 50px rgba(255, 20, 147, 0.2); /* Glow effect */
+            animation: wavyFire 2s linear infinite;
         }
 
         .profile-picture img {
             width: 100%;
             border-radius: 50%; /* Circular shape */
-        }
-
-        .profile-picture:before, .profile-picture:after {
-            content: "";
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            width: calc(100% + 20px);
-            height: calc(100% + 20px);
-            border-radius: 50%;
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.8), 
-                        0 0 30px rgba(255, 20, 147, 0.6), 
-                        0 0 40px rgba(255, 20, 147, 0.4), 
-                        0 0 50px rgba(255, 20, 147, 0.2);
-            animation: wavyFire 2s linear infinite;
-        }
-
-        .profile-picture:after {
-            top: -20px;
-            left: -20px;
-            width: calc(100% + 40px);
-            height: calc(100% + 40px);
-            box-shadow: 0 0 40px rgba(255, 20, 147, 0.8), 
-                        0 0 50px rgba(255, 20, 147, 0.6), 
-                        0 0 60px rgba(255, 20, 147, 0.4), 
-                        0 0 70px rgba(255, 20, 147, 0.2);
-            animation: wavyFire 3s linear infinite;
         }
 
         @keyframes wavyFire {
@@ -309,79 +288,50 @@
 </head>
 <body>
     <div id="loading-screen">
-        <video id="loading-video" autoplay muted loop playsinline>
-            <source src="Loading.mp4" type="video/mp4">
-        </video>
-        <h1>Loading<span id="ellipsis"></span></h1>
+        <h1>Loading...</h1>
     </div>
-    <video id="video-background" autoplay muted loop playsinline>
-        <source src="Main.mp4" type="video/mp4">
-    </video>
-    <video id="main-video" autoplay muted loop playsinline>
-        <source src="Main.mp4" type="video/mp4">
-    </video>
-    <div id="main-content">
-        <header>
-            <h1>Ah, skill issue I'm afraid.</h1>
-        </header>
-        <div class="content">
-            <div class="profile-picture">
-                <img src="448969993_1005954630665614_4173930242296266244_n.jpg" alt="Profile Picture">
-            </div>            
-            <div class="intro">
-                <h2>ngleeqthai</h2>
-                <p>social media:</p>
-            </div>
-            <div class="links">
-                <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
-                <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
-                <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
-                <a href="https://specs.gg/ngleeq.thai" target="_blank">My Settings</a>
-                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Valorant Tracker</a>
-            </div>
+    
+    <video id="loading-video" src="loading.mp4" preload="auto" autoplay loop></video>
+    <video id="video-background" src="background.mp4" preload="auto" autoplay muted loop></video>
+    <video id="main-video" src="main.mp4" preload="auto" autoplay muted loop></video>
+
+    <header>
+        <h1>Welcome to my world</h1>
+    </header>
+
+    <div class="content">
+        <div class="profile-picture">
+            <img src="profile.jpg" alt="Profile Picture">
         </div>
-        <footer>
-            <p>&copy; WWWWWWWWWWWWWWW</p>
-        </footer>
+
+        <div class="intro">
+            <h2>Hi, I'm Ng Lee Qthai</h2>
+            <p>A Valorant fan and web enthusiast</p>
+        </div>
+
+        <div class="links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Steam</a>
+            <a href="#">Website</a>
+            <a href="#">Twitter</a>
+        </div>
     </div>
+
+    <footer>
+        <p>Designed with <img src="valorant-logo.png" alt="Valorant Logo" class="valorant-logo"> in mind</p>
+    </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Delay before starting loading video
-            setTimeout(function() {
-                // Show and start loading video from the 3rd second instantly
-                const loadingVideo = document.getElementById("loading-video");
-                loadingVideo.currentTime = 3; // Start from the 3rd second
-                loadingVideo.style.display = "block"; // Show loading video
-                loadingVideo.play(); // Start playing loading video
-            }, 3000); // 3000 milliseconds delay before showing loading video
+        // Simulate loading process
+        window.addEventListener('load', function () {
+            const loadingScreen = document.getElementById('loading-screen');
+            const mainContent = document.getElementById('main-content');
 
-            // Hide the loading screen and show the video background and main content after 6 seconds from showing loading video
-            setTimeout(function() {
-                document.getElementById("loading-screen").style.display = "none";
-                document.getElementById("loading-video").style.display = "none"; // Hide loading video
-                document.getElementById("video-background").style.filter = "none"; // Remove blur effect
-                document.getElementById("main-video").style.display = "block"; // Display main video
-                document.getElementById("main-video").play(); // Play main video
-                document.getElementById("main-content").style.display = "block";
-            }, 9000); // 9000 milliseconds = 3 seconds delay + 6 seconds
-
-            // Ellipsis animation (now faster, every 166 milliseconds)
-            const ellipsis = document.getElementById('ellipsis');
-            let count = 0;
-            setInterval(() => {
-                count++;
-                if (count === 1) {
-                    ellipsis.textContent = '';
-                } else if (count === 2) {
-                    ellipsis.textContent = '.';
-                } else if (count === 3) {
-                    ellipsis.textContent = '..';
-                } else if (count === 4) {
-                    ellipsis.textContent = '...';
-                    count = 0;
-                }
-            }, 166); // Change every 0.166 seconds (166 milliseconds)
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+            }, 3000); // Adjust the time as needed
         });
     </script>
 </body>
