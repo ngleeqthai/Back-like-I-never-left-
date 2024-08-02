@@ -359,7 +359,7 @@
                 loadingVideo.currentTime = 3; // Start from the 3rd second
                 loadingVideo.style.display = "block"; // Show loading video
                 loadingVideo.play(); // Start playing loading video
-            }, 3000); // 3000 milliseconds delay before showing loading video
+            }, 2500); // 3000 milliseconds delay before showing loading video
 
             // Hide the loading screen and show the video background and main content after 6 seconds from showing loading video
             setTimeout(function() {
@@ -369,7 +369,7 @@
                 document.getElementById("main-video").style.display = "block"; // Display main video
                 document.getElementById("main-video").play(); // Play main video
                 document.getElementById("main-content").style.display = "block";
-            }, 6500); // 9000 milliseconds = 3 seconds delay + 6 seconds
+            }, 7000); // 9000 milliseconds = 3 seconds delay + 6 seconds
 
             // Ellipsis animation (now faster, every 166 milliseconds)
             const ellipsis = document.getElementById('ellipsis');
