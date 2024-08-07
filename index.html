@@ -111,9 +111,11 @@
         }
 
         .profile-pictures {
-            display: flex;
-            align-items: center;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Space between the large and small picture */
         }
 
         .profile-picture {
@@ -135,27 +137,28 @@
             border-radius: 50%; /* Circular shape */
         }
 
-        .profile-picture-small {
-            width: 10vw; /* Size of the small profile picture */
-            margin-left: 20px; /* Space between the large and small profile pictures */
-            position: relative; /* For positioning the text bubble */
+        .small-profile-picture {
+            position: relative;
+            max-width: 4vw; /* Smaller size for the small picture */
+            border-radius: 50%; /* Circular shape */
+            border: 2px solid rgba(204, 94, 255, 1); /* Solid pink border */
         }
 
-        .profile-picture-small img {
+        .small-profile-picture img {
             width: 100%;
-            border-radius: 50%;
+            border-radius: 50%; /* Circular shape */
         }
 
         .text-bubble {
             position: absolute;
-            top: -30px; /* Adjust based on the size of the text bubble */
+            top: -30px; /* Adjust as needed */
             left: 50%;
             transform: translateX(-50%);
-            background-color: rgba(204, 94, 255, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             color: #fff;
             padding: 5px 10px;
-            border-radius: 10px;
-            font-size: 1em;
+            border-radius: 5px;
+            font-size: 0.9em;
             white-space: nowrap;
         }
 
@@ -271,18 +274,14 @@
             bottom: 0;
             left: 0;
             z-index: 1000; /* Ensure it stays above other content */
-        }
-
-        footer p {
-            margin: 0;
-        }
-
-        .valorant-logo {
-            width: 100px;
-            height: auto;
+            color: #fff;
         }
 
         @keyframes slideIn {
+            from {
+                right: -100%;
+                opacity: 0;
+            }
             to {
                 right: 0;
                 opacity: 1;
@@ -293,63 +292,59 @@
 <body>
     <div id="loading-screen">
         <h1>Loading...</h1>
+        <video id="loading-video" src="loading.mp4" autoplay muted loop></video>
     </div>
 
-    <video id="loading-video" autoplay muted loop>
-        <source src="Loading.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <video id="video-background" autoplay muted loop>
-        <source src="Main.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <video id="main-video" autoplay muted loop>
-        <source src="Main.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <header>
-        <h1>Welcome to my world</h1>
-    </header>
+    <video id="main-video" src="main.mp4" autoplay muted loop></video>
 
     <div id="main-content">
+        <header>
+            <h1>Welcome to my world</h1>
+        </header>
+
         <div class="content">
             <div class="profile-pictures">
                 <div class="profile-picture">
-                    <img src="LargeProfilePic.jpg" alt="Profile Picture">
+                    <img src="big-profile-picture.jpg" alt="Big Profile Picture">
                     <div class="fire-animation"></div>
                 </div>
-                <div class="profile-picture profile-picture-small">
-                    <div class="text-bubble">Small Picture</div>
-                    <img src="SmallProfilePic.jpg" alt="Small Profile Picture">
+                <div class="small-profile-picture">
+                    <img src="small-profile-picture.jpg" alt="Small Profile Picture">
+                    <div class="text-bubble">Small Pic</div>
                 </div>
             </div>
 
             <div class="intro">
-                <h2>Introduction</h2>
-                <p>Your introduction text goes here.</p>
+                <h2>Hello, I'm ngleeqthai</h2>
+                <p>Welcome to my profile page!</p>
             </div>
 
             <div class="links">
-                <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
-                <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
-                <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
-                <a href="https://specs.gg/ngleeq.thai" target="_blank">Setting</a>
-                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Tracker</a>
+                <a href="https://www.facebook.com/ngleeqthai/">Facebook</a>
+                <a href="https://www.instagram.com/_ngleeq.thai/?hl=en">Instagram</a>
+                <a href="https://steamcommunity.com/id/ngleeqthai0212/">Steam</a>
+                <a href="https://specs.gg/ngleeq.thai">Specs</a>
+                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview">Tracker</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <p><img src="valorant_logo.png" alt="Valorant Logo" class="valorant-logo"></p>
+        &copy; 2024 ngleeqthai. All rights reserved.
     </footer>
 
     <script>
-        window.addEventListener('load', () => {
-            document.getElementById('loading-screen').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
+        window.addEventListener('load', function () {
+            const loadingScreen = document.getElementById('loading-screen');
+            const loadingVideo = document.getElementById('loading-video');
+            const mainVideo = document.getElementById('main-video');
+            const mainContent = document.getElementById('main-content');
+
+            loadingVideo.addEventListener('ended', function () {
+                loadingScreen.style.display = 'none';
+                mainVideo.style.display = 'block';
+                mainContent.style.display = 'block';
+            });
         });
     </script>
 </body>
