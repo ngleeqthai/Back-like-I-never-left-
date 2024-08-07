@@ -110,6 +110,12 @@
             width: 90%; /* Adjust width as needed */
         }
 
+        .profile-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
         .profile-picture {
             position: relative;
             max-width: 12vw; /* Responsive size */
@@ -232,6 +238,32 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
+        .small-profile {
+            position: absolute;
+            top: 0;
+            right: -10vw; /* Adjust as needed */
+            max-width: 4vw; /* Adjust as needed */
+            border: 2px solid #ff66cc;
+            border-radius: 50%;
+        }
+
+        .small-profile img {
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .text-bubble {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            background-color: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 1em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
         footer {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px;
@@ -254,123 +286,71 @@
 
         @keyframes slideIn {
             0% {
-                right: -100%; /* Start off-screen to the right */
-                opacity: 0;
+                right: -100%; /* Initial position outside the screen */
+                opacity: 0; /* Initial opacity */
             }
             100% {
-                right: 0; /* Slide in to the right */
-                opacity: 1;
+                right: 0; /* Final position in view */
+                opacity: 1; /* Final opacity */
             }
         }
 
-        @media (max-width: 1200px) {
-            /* Larger devices adjustments */
-            .content {
-                width: 90%;
-                max-width: 1000px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            /* Smaller devices adjustments */
-            .content {
-                width: 90%;
-                max-width: 90%;
-            }
-
-            .profile-picture {
-                max-width: 40vw; /* Increase profile picture size on smaller screens */
-            }
-
-            .intro p {
-                font-size: 2em; /* Decrease font size */
-            }
-
-            .links {
-                margin-top: 5px; /* Reduce margin top for links */
-            }
-
-            .links a {
-                font-size: 2em; /* Decrease link font size */
-                margin: 5px; /* Reduce margin between links */
+        @media screen and (max-width: 600px) {
+            header h1 {
+                font-size: 1.5em; /* Responsive header font size */
             }
 
             .intro h2 {
-                font-size: 2em;
+                font-size: 2.5em; /* Responsive intro title font size */
             }
 
             .intro p {
-                font-size: 2em; /*Title size*/
+                font-size: 1.5em; /* Responsive intro paragraph font size */
             }
-        }
 
-        .bubble-text {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 10px;
-            border-radius: 10px;
-            border: 2px solid #cc5eff;
-            animation: glowBubble 2s ease-in-out infinite alternate; /* Add glow animation */
-            font-size: 1.2em;
-            color: #fff;
-            max-width: 90%; /* Ensure it doesn't overflow on smaller screens */
-            z-index: 1000;
-            margin-top: 50px;
-        }
-
-        .bubble-text h2 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.5em; /* Adjust heading size */
-        }
-
-        .bubble-text p {
-            margin: 0;
-            font-size: 1.2em; /* Adjust paragraph size */
-        }
-
-        .bubble-left {
-            left: 10%; /* Adjust position for left bubble */
-        }
-
-        .bubble-right {
-            right: 10%; /* Adjust position for right bubble */
-        }
-
-        @keyframes glowBubble {
-            0% {
-                box-shadow: 0 0 10px rgba(204, 94, 255, 0);
+            .links a {
+                font-size: 0.8em; /* Responsive links font size */
+                margin: 5px; /* Responsive links margin */
             }
-            100% {
-                box-shadow: 0 0 30px rgba(204, 94, 255, 1);
+
+            .small-profile {
+                max-width: 8vw; /* Responsive small profile size */
+            }
+
+            .text-bubble {
+                font-size: 0.8em; /* Responsive text bubble font size */
             }
         }
     </style>
 </head>
 <body>
     <div id="loading-screen">
-        <video id="loading-video" autoplay muted>
-            <source src="My Valorant Loading Screen.mp4" type="video/mp4">
-        </video>
         <h1>Loading...</h1>
+        <video id="loading-video" autoplay muted loop>
+            <source src="loading.mp4" type="video/mp4">
+        </video>
     </div>
-
     <video id="video-background" autoplay muted loop>
         <source src="background.mp4" type="video/mp4">
     </video>
-
     <div id="main-content">
         <header>
             <h1>Welcome to my world</h1>
         </header>
         <div class="content">
-            <div class="profile-picture">
-                <div class="fire-animation"></div>
-                <img src="your-image.jpg" alt="Profile Picture">
+            <div class="profile-container">
+                <div class="profile-picture">
+                    <img src="https://pbs.twimg.com/media/GJh0tr7WwAAESbK.jpg:large" alt="Profile Picture">
+                    <div class="fire-animation"></div>
+                </div>
+                <div class="small-profile">
+                    <img src="https://via.placeholder.com/150" alt="Small Profile Picture">
+                    <div class="text-bubble">Hi there!</div>
+                </div>
             </div>
             <div class="intro">
-                <h2>Social Media</h2>
-                <p>Follow me on:</p>
+                <h2>Hey there!</h2>
+                <p>I'm ngleeqthai.</p>
             </div>
             <div class="links">
                 <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
@@ -379,27 +359,31 @@
                 <a href="https://specs.gg/ngleeq.thai" target="_blank">Setting</a>
                 <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Tracker</a>
             </div>
-            <div class="bubble-text bubble-left">
-                <h2>Tip</h2>
-                <p>For best experience, view this page in full-screen mode.</p>
-            </div>
-            <div class="bubble-text bubble-right">
-                <h2>Did You Know?</h2>
-                <p>This profile is inspired by Valorant's Clove agent style.</p>
-            </div>
         </div>
+        <footer>
+            <p>&copy; 2024 ngleeqthai. All rights reserved.</p>
+            <img src="valorant-logo.png" alt="Valorant Logo" class="valorant-logo">
+        </footer>
     </div>
-    <footer>
-        <p>&copy; 2024 ngleeqthai</p>
-    </footer>
     <video id="main-video" autoplay muted loop>
-        <source src="Your_Main_Video.mp4" type="video/mp4">
+        <source src="main.mp4" type="video/mp4">
     </video>
     <script>
-        window.addEventListener('load', function() {
-            document.getElementById('loading-screen').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-            document.getElementById('main-video').style.display = 'block';
+        document.addEventListener("DOMContentLoaded", function() {
+            var loadingScreen = document.getElementById("loading-screen");
+            var mainContent = document.getElementById("main-content");
+            var loadingVideo = document.getElementById("loading-video");
+            var mainVideo = document.getElementById("main-video");
+
+            // Show loading video
+            loadingVideo.style.display = "block";
+
+            setTimeout(function() {
+                loadingScreen.style.display = "none";
+                loadingVideo.style.display = "none";
+                mainVideo.style.display = "block";
+                mainContent.style.display = "block";
+            }, 3000); // Adjust the timeout as needed
         });
     </script>
 </body>
