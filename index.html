@@ -110,10 +110,10 @@
             width: 90%; /* Adjust width as needed */
         }
 
-        .profile-container {
-            position: relative;
+        .profile-pictures {
             display: flex;
             align-items: center;
+            position: relative;
         }
 
         .profile-picture {
@@ -133,6 +133,30 @@
         .profile-picture img {
             width: 100%;
             border-radius: 50%; /* Circular shape */
+        }
+
+        .profile-picture-small {
+            width: 10vw; /* Size of the small profile picture */
+            margin-left: 20px; /* Space between the large and small profile pictures */
+            position: relative; /* For positioning the text bubble */
+        }
+
+        .profile-picture-small img {
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .text-bubble {
+            position: absolute;
+            top: -30px; /* Adjust based on the size of the text bubble */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(204, 94, 255, 0.9);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 1em;
+            white-space: nowrap;
         }
 
         .fire-animation {
@@ -181,7 +205,7 @@
         }
 
         .intro p {
-            font-size: 4em; /* Title size */
+            font-size: 4em; /*Title size*/
             line-height: 1;
             margin-top: 5px;
             margin-bottom: 0px;
@@ -238,34 +262,6 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
-        .small-profile {
-            position: absolute;
-            top: 10px; /* Adjust as needed */
-            right: 10px; /* Adjust as needed */
-            max-width: 80px; /* Adjust as needed */
-            border: 2px solid #ff66cc;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-
-        .small-profile img {
-            width: 100%;
-            border-radius: 50%;
-        }
-
-        .text-bubble {
-            position: absolute;
-            top: -30px;
-            right: 100%; /* Adjust position relative to the small profile picture */
-            background-color: #333;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 10px;
-            font-size: 1em;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            white-space: nowrap; /* Prevent wrapping */
-        }
-
         footer {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px;
@@ -283,44 +279,13 @@
 
         .valorant-logo {
             width: 100px;
-            margin-top: 10px;
+            height: auto;
         }
 
         @keyframes slideIn {
-            0% {
-                right: -100%; /* Initial position outside the screen */
-                opacity: 0; /* Initial opacity */
-            }
-            100% {
-                right: 0; /* Final position in view */
-                opacity: 1; /* Final opacity */
-            }
-        }
-
-        @media screen and (max-width: 600px) {
-            header h1 {
-                font-size: 1.5em; /* Responsive header font size */
-            }
-
-            .intro h2 {
-                font-size: 2.5em; /* Responsive intro title font size */
-            }
-
-            .intro p {
-                font-size: 1.5em; /* Responsive intro paragraph font size */
-            }
-
-            .links a {
-                font-size: 0.8em; /* Responsive links font size */
-                margin: 5px; /* Responsive links margin */
-            }
-
-            .small-profile {
-                max-width: 8vw; /* Responsive small profile size */
-            }
-
-            .text-bubble {
-                font-size: 0.8em; /* Responsive text bubble font size */
+            to {
+                right: 0;
+                opacity: 1;
             }
         }
     </style>
@@ -328,32 +293,45 @@
 <body>
     <div id="loading-screen">
         <h1>Loading...</h1>
-        <video id="loading-video" autoplay muted loop>
-            <source src="loading.mp4" type="video/mp4">
-        </video>
     </div>
-    <video id="video-background" autoplay muted loop>
-        <source src="background.mp4" type="video/mp4">
+
+    <video id="loading-video" autoplay muted loop>
+        <source src="Loading.mp4" type="video/mp4">
+        Your browser does not support the video tag.
     </video>
+
+    <video id="video-background" autoplay muted loop>
+        <source src="Main.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <video id="main-video" autoplay muted loop>
+        <source src="Main.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <h1>Welcome to my world</h1>
+    </header>
+
     <div id="main-content">
-        <header>
-            <h1>Welcome to my world</h1>
-        </header>
         <div class="content">
-            <div class="profile-container">
+            <div class="profile-pictures">
                 <div class="profile-picture">
-                    <img src="https://pbs.twimg.com/media/GJh0tr7WwAAESbK.jpg:large" alt="Profile Picture">
+                    <img src="LargeProfilePic.jpg" alt="Profile Picture">
                     <div class="fire-animation"></div>
                 </div>
-                <div class="small-profile">
-                    <img src="https://via.placeholder.com/150" alt="Small Profile Picture">
-                    <div class="text-bubble">Hi there!</div>
+                <div class="profile-picture profile-picture-small">
+                    <div class="text-bubble">Small Picture</div>
+                    <img src="SmallProfilePic.jpg" alt="Small Profile Picture">
                 </div>
             </div>
+
             <div class="intro">
-                <h2>Hey there!</h2>
-                <p>I'm ngleeqthai.</p>
+                <h2>Introduction</h2>
+                <p>Your introduction text goes here.</p>
             </div>
+
             <div class="links">
                 <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
                 <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
@@ -362,30 +340,16 @@
                 <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Tracker</a>
             </div>
         </div>
-        <footer>
-            <p>&copy; 2024 ngleeqthai. All rights reserved.</p>
-            <img src="valorant-logo.png" alt="Valorant Logo" class="valorant-logo">
-        </footer>
     </div>
-    <video id="main-video" autoplay muted loop>
-        <source src="main.mp4" type="video/mp4">
-    </video>
+
+    <footer>
+        <p><img src="valorant_logo.png" alt="Valorant Logo" class="valorant-logo"></p>
+    </footer>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var loadingScreen = document.getElementById("loading-screen");
-            var mainContent = document.getElementById("main-content");
-            var loadingVideo = document.getElementById("loading-video");
-            var mainVideo = document.getElementById("main-video");
-
-            // Show loading video
-            loadingVideo.style.display = "block";
-
-            setTimeout(function() {
-                loadingScreen.style.display = "none";
-                loadingVideo.style.display = "none";
-                mainVideo.style.display = "block";
-                mainContent.style.display = "block";
-            }, 3000); // Adjust the timeout as needed
+        window.addEventListener('load', () => {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
         });
     </script>
 </body>
