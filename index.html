@@ -120,7 +120,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 4px solid rgba(204, 94, 255, 1); /* Solid 4px pink border */
+            border: 4px solid rgba(204, 94, 255, 1); /* Solid 1px pink border */
             animation: glow 3s ease-in-out infinite alternate; /* Glowing animation */
         }
 
@@ -292,74 +292,102 @@
 
             .links a {
                 font-size: 2em; /* Decrease font size */
+                padding: 5px 8px; /* Reduce padding */
             }
-        }
 
-        .small-profile {
-            position: absolute;
-            bottom: -10px; /* Adjust position */
-            left: calc(100% + 10px); /* Position to the right of the large picture */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+            header {
+                padding: 10px; /* Reduce header padding */
+            }
 
-        .small-profile img {
-            width: 30px; /* Size of small profile picture */
-            border-radius: 50%;
-        }
+            header h1 {
+                text-align: center; /* Center align header text */
+                width: auto; /* Reset width to auto */
+            }
 
-        .text-bubble {
-            background: #333;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 10px;
-            position: absolute;
-            bottom: 100%; /* Position above the small picture */
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-            font-size: 12px; /* Adjust as needed */
+            footer {
+                position: static; /* Ensure footer is static on smaller screens */
+                margin-top: 20px; /* Add margin to separate from content */
+            }
         }
     </style>
 </head>
 <body>
     <div id="loading-screen">
-        <h1>Loading...</h1>
-        <video id="loading-video" src="loading.mp4" autoplay muted></video>
+        <video id="loading-video" autoplay muted loop playsinline>
+            <source src="Loading.mp4" type="video/mp4">
+        </video>
+        <h1>Loading<span id="ellipsis"></span></h1>
     </div>
-    <video id="video-background" src="background.mp4" autoplay loop muted></video>
-    <video id="main-video" src="main.mp4" autoplay loop muted></video>
+    <video id="video-background" autoplay muted loop playsinline>
+        <source src="Main.mp4" type="video/mp4">
+    </video>
+    <video id="main-video" autoplay muted loop playsinline>
+        <source src="Main.mp4" type="video/mp4">
+    </video>
     <div id="main-content">
         <header>
-            <h1>Welcome to my world</h1>
+            <h1>Ah, skill issue I'm afraid.</h1>
         </header>
         <div class="content">
             <div class="profile-picture">
                 <img src="Main Avatar.jpg" alt="Profile Picture">
                 <div class="fire-animation"></div>
-                <!-- New small profile picture and text bubble -->
-                <div class="small-profile">
-                    <img src="Small Avatar.jpg" alt="Small Profile Picture">
-                    <div class="text-bubble">Text above small picture</div>
-                </div>
-            </div>
+            </div>            
             <div class="intro">
-                <h2>Hello, I'm Ngleeqthai</h2>
-                <p>Welcome to my personal profile page</p>
+                <h2>ngleeqthai</h2>
+                <p>social media:</p>
             </div>
             <div class="links">
                 <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
                 <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
                 <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
-                <a href="https://specs.gg/ngleeq.thai" target="_blank">Settings</a>
-                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Tracker</a>
+                <a href="https://specs.gg/ngleeq.thai" target="_blank">My Settings</a>
+                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Valorant Tracker</a>
             </div>
         </div>
         <footer>
-            <p>&copy; 2024 Ngleeqthai. All rights reserved.</p>
-            <img class="valorant-logo" src="valorant-logo.png" alt="Valorant Logo">
+            <p>&copy; WWWWWWWWWWWWWWW</p>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Delay before starting loading video
+            setTimeout(function() {
+                // Show and start loading video from the 3rd second instantly
+                const loadingVideo = document.getElementById("loading-video");
+                loadingVideo.currentTime = 3; // Start from the 3rd second
+                loadingVideo.style.display = "block"; // Show loading video
+                loadingVideo.play(); // Start playing loading video
+            }, 2500); // 3000 milliseconds delay before showing loading video
+
+            // Hide the loading screen and show the video background and main content after 6 seconds from showing loading video
+            setTimeout(function() {
+                document.getElementById("loading-screen").style.display = "none";
+                document.getElementById("loading-video").style.display = "none"; // Hide loading video
+                document.getElementById("video-background").style.filter = "none"; // Remove blur effect
+                document.getElementById("main-video").style.display = "block"; // Display main video
+                document.getElementById("main-video").play(); // Play main video
+                document.getElementById("main-content").style.display = "block";
+            }, 6500); // 9000 milliseconds = 3 seconds delay + 6 seconds
+
+            // Ellipsis animation (now faster, every 166 milliseconds)
+            const ellipsis = document.getElementById('ellipsis');
+            let count = 0;
+            setInterval(() => {
+                count++;
+                if (count === 1) {
+                    ellipsis.textContent = '';
+                } else if (count === 2) {
+                    ellipsis.textContent = '.';
+                } else if (count === 3) {
+                    ellipsis.textContent = '..';
+                } else if (count === 4) {
+                    ellipsis.textContent = '...';
+                    count = 0;
+                }
+            }, 166); // Change every 0.166 seconds (166 milliseconds)
+        });
+    </script>
 </body>
 </html>
