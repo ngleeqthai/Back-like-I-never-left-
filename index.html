@@ -291,102 +291,115 @@
             }
 
             .links a {
-                font-size: 2em; /* Decrease font size */
-                padding: 5px 8px; /* Reduce padding */
+                font-size: 2em; /* Decrease link font size */
+                margin: 5px; /* Reduce margin between links */
             }
 
-            header {
-                padding: 10px; /* Reduce header padding */
+            .intro h2 {
+                font-size: 2em;
             }
 
-            header h1 {
-                text-align: center; /* Center align header text */
-                width: auto; /* Reset width to auto */
+            .intro p {
+                font-size: 2em; /*Title size*/
             }
+        }
 
-            footer {
-                position: static; /* Ensure footer is static on smaller screens */
-                margin-top: 20px; /* Add margin to separate from content */
+        .bubble-text {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #cc5eff;
+            animation: glowBubble 2s ease-in-out infinite alternate; /* Add glow animation */
+            font-size: 1.2em;
+            color: #fff;
+            max-width: 90%; /* Ensure it doesn't overflow on smaller screens */
+            z-index: 1000;
+            margin-top: 50px;
+        }
+
+        .bubble-text h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.5em; /* Adjust heading size */
+        }
+
+        .bubble-text p {
+            margin: 0;
+            font-size: 1.2em; /* Adjust paragraph size */
+        }
+
+        .bubble-left {
+            left: 10%; /* Adjust position for left bubble */
+        }
+
+        .bubble-right {
+            right: 10%; /* Adjust position for right bubble */
+        }
+
+        @keyframes glowBubble {
+            0% {
+                box-shadow: 0 0 10px rgba(204, 94, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 30px rgba(204, 94, 255, 1);
             }
         }
     </style>
 </head>
 <body>
     <div id="loading-screen">
-        <video id="loading-video" autoplay muted loop playsinline>
-            <source src="Loading.mp4" type="video/mp4">
+        <video id="loading-video" autoplay muted>
+            <source src="My Valorant Loading Screen.mp4" type="video/mp4">
         </video>
-        <h1>Loading<span id="ellipsis"></span></h1>
+        <h1>Loading...</h1>
     </div>
-    <video id="video-background" autoplay muted loop playsinline>
-        <source src="Main.mp4" type="video/mp4">
+
+    <video id="video-background" autoplay muted loop>
+        <source src="background.mp4" type="video/mp4">
     </video>
-    <video id="main-video" autoplay muted loop playsinline>
-        <source src="Main.mp4" type="video/mp4">
-    </video>
+
     <div id="main-content">
         <header>
-            <h1>Ah, skill issue I'm afraid.</h1>
+            <h1>Welcome to my world</h1>
         </header>
         <div class="content">
             <div class="profile-picture">
-                <img src="Main Avatar.jpg" alt="Profile Picture">
                 <div class="fire-animation"></div>
-            </div>            
+                <img src="your-image.jpg" alt="Profile Picture">
+            </div>
             <div class="intro">
-                <h2>ngleeqthai</h2>
-                <p>social media:</p>
+                <h2>Social Media</h2>
+                <p>Follow me on:</p>
             </div>
             <div class="links">
                 <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
                 <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
                 <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
-                <a href="https://specs.gg/ngleeq.thai" target="_blank">My Settings</a>
-                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Valorant Tracker</a>
+                <a href="https://specs.gg/ngleeq.thai" target="_blank">Setting</a>
+                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Tracker</a>
+            </div>
+            <div class="bubble-text bubble-left">
+                <h2>Tip</h2>
+                <p>For best experience, view this page in full-screen mode.</p>
+            </div>
+            <div class="bubble-text bubble-right">
+                <h2>Did You Know?</h2>
+                <p>This profile is inspired by Valorant's Clove agent style.</p>
             </div>
         </div>
-        <footer>
-            <p>&copy; WWWWWWWWWWWWWWW</p>
-        </footer>
     </div>
-
+    <footer>
+        <p>&copy; 2024 ngleeqthai</p>
+    </footer>
+    <video id="main-video" autoplay muted loop>
+        <source src="Your_Main_Video.mp4" type="video/mp4">
+    </video>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Delay before starting loading video
-            setTimeout(function() {
-                // Show and start loading video from the 3rd second instantly
-                const loadingVideo = document.getElementById("loading-video");
-                loadingVideo.currentTime = 3; // Start from the 3rd second
-                loadingVideo.style.display = "block"; // Show loading video
-                loadingVideo.play(); // Start playing loading video
-            }, 2500); // 3000 milliseconds delay before showing loading video
-
-            // Hide the loading screen and show the video background and main content after 6 seconds from showing loading video
-            setTimeout(function() {
-                document.getElementById("loading-screen").style.display = "none";
-                document.getElementById("loading-video").style.display = "none"; // Hide loading video
-                document.getElementById("video-background").style.filter = "none"; // Remove blur effect
-                document.getElementById("main-video").style.display = "block"; // Display main video
-                document.getElementById("main-video").play(); // Play main video
-                document.getElementById("main-content").style.display = "block";
-            }, 6500); // 9000 milliseconds = 3 seconds delay + 6 seconds
-
-            // Ellipsis animation (now faster, every 166 milliseconds)
-            const ellipsis = document.getElementById('ellipsis');
-            let count = 0;
-            setInterval(() => {
-                count++;
-                if (count === 1) {
-                    ellipsis.textContent = '';
-                } else if (count === 2) {
-                    ellipsis.textContent = '.';
-                } else if (count === 3) {
-                    ellipsis.textContent = '..';
-                } else if (count === 4) {
-                    ellipsis.textContent = '...';
-                    count = 0;
-                }
-            }, 166); // Change every 0.166 seconds (166 milliseconds)
+        window.addEventListener('load', function() {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('main-video').style.display = 'block';
         });
     </script>
 </body>
