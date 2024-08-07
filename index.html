@@ -181,7 +181,7 @@
         }
 
         .intro p {
-            font-size: 4em; /*Title size*/
+            font-size: 4em; /* Title size */
             line-height: 1;
             margin-top: 5px;
             margin-bottom: 0px;
@@ -240,11 +240,12 @@
 
         .small-profile {
             position: absolute;
-            top: 0;
-            right: -10vw; /* Adjust as needed */
-            max-width: 4vw; /* Adjust as needed */
+            top: 10px; /* Adjust as needed */
+            right: 10px; /* Adjust as needed */
+            max-width: 80px; /* Adjust as needed */
             border: 2px solid #ff66cc;
             border-radius: 50%;
+            overflow: hidden;
         }
 
         .small-profile img {
@@ -255,13 +256,14 @@
         .text-bubble {
             position: absolute;
             top: -30px;
-            right: -30px;
+            right: 100%; /* Adjust position relative to the small profile picture */
             background-color: #333;
             color: #fff;
             padding: 5px 10px;
             border-radius: 10px;
             font-size: 1em;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            white-space: nowrap; /* Prevent wrapping */
         }
 
         footer {
@@ -281,7 +283,7 @@
 
         .valorant-logo {
             width: 100px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         @keyframes slideIn {
