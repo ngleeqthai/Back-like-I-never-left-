@@ -110,14 +110,6 @@
             width: 90%; /* Adjust width as needed */
         }
 
-        .profile-pictures {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px; /* Space between the large and small picture */
-        }
-
         .profile-picture {
             position: relative;
             max-width: 12vw; /* Responsive size */
@@ -128,38 +120,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 4px solid rgba(204, 94, 255, 1); /* Solid 1px pink border */
+            border: 4px solid rgba(204, 94, 255, 1); /* Solid 4px pink border */
             animation: glow 3s ease-in-out infinite alternate; /* Glowing animation */
         }
 
         .profile-picture img {
             width: 100%;
             border-radius: 50%; /* Circular shape */
-        }
-
-        .small-profile-picture {
-            position: relative;
-            max-width: 4vw; /* Smaller size for the small picture */
-            border-radius: 50%; /* Circular shape */
-            border: 2px solid rgba(204, 94, 255, 1); /* Solid pink border */
-        }
-
-        .small-profile-picture img {
-            width: 100%;
-            border-radius: 50%; /* Circular shape */
-        }
-
-        .text-bubble {
-            position: absolute;
-            top: -30px; /* Adjust as needed */
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9em;
-            white-space: nowrap;
         }
 
         .fire-animation {
@@ -274,78 +241,125 @@
             bottom: 0;
             left: 0;
             z-index: 1000; /* Ensure it stays above other content */
-            color: #fff;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .valorant-logo {
+            width: 100px;
+            margin-top: 20px;
         }
 
         @keyframes slideIn {
-            from {
-                right: -100%;
+            0% {
+                right: -100%; /* Start off-screen to the right */
                 opacity: 0;
             }
-            to {
-                right: 0;
+            100% {
+                right: 0; /* Slide in to the right */
                 opacity: 1;
             }
+        }
+
+        @media (max-width: 1200px) {
+            /* Larger devices adjustments */
+            .content {
+                width: 90%;
+                max-width: 1000px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            /* Smaller devices adjustments */
+            .content {
+                width: 90%;
+                max-width: 90%;
+            }
+
+            .profile-picture {
+                max-width: 40vw; /* Increase profile picture size on smaller screens */
+            }
+
+            .intro p {
+                font-size: 2em; /* Decrease font size */
+            }
+
+            .links {
+                margin-top: 5px; /* Reduce margin top for links */
+            }
+
+            .links a {
+                font-size: 2em; /* Decrease font size */
+            }
+        }
+
+        .small-profile {
+            position: absolute;
+            bottom: -10px; /* Adjust position */
+            left: calc(100% + 10px); /* Position to the right of the large picture */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .small-profile img {
+            width: 30px; /* Size of small profile picture */
+            border-radius: 50%;
+        }
+
+        .text-bubble {
+            background: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 100%; /* Position above the small picture */
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 12px; /* Adjust as needed */
         }
     </style>
 </head>
 <body>
     <div id="loading-screen">
         <h1>Loading...</h1>
-        <video id="loading-video" src="loading.mp4" autoplay muted loop></video>
+        <video id="loading-video" src="loading.mp4" autoplay muted></video>
     </div>
-
-    <video id="main-video" src="main.mp4" autoplay muted loop></video>
-
+    <video id="video-background" src="background.mp4" autoplay loop muted></video>
+    <video id="main-video" src="main.mp4" autoplay loop muted></video>
     <div id="main-content">
         <header>
             <h1>Welcome to my world</h1>
         </header>
-
         <div class="content">
-            <div class="profile-pictures">
-                <div class="profile-picture">
-                    <img src="big-profile-picture.jpg" alt="Big Profile Picture">
-                    <div class="fire-animation"></div>
-                </div>
-                <div class="small-profile-picture">
-                    <img src="small-profile-picture.jpg" alt="Small Profile Picture">
-                    <div class="text-bubble">Small Pic</div>
+            <div class="profile-picture">
+                <img src="Main Avatar.jpg" alt="Profile Picture">
+                <div class="fire-animation"></div>
+                <!-- New small profile picture and text bubble -->
+                <div class="small-profile">
+                    <img src="Small Avatar.jpg" alt="Small Profile Picture">
+                    <div class="text-bubble">Text above small picture</div>
                 </div>
             </div>
-
             <div class="intro">
-                <h2>Hello, I'm ngleeqthai</h2>
-                <p>Welcome to my profile page!</p>
+                <h2>Hello, I'm Ngleeqthai</h2>
+                <p>Welcome to my personal profile page</p>
             </div>
-
             <div class="links">
-                <a href="https://www.facebook.com/ngleeqthai/">Facebook</a>
-                <a href="https://www.instagram.com/_ngleeq.thai/?hl=en">Instagram</a>
-                <a href="https://steamcommunity.com/id/ngleeqthai0212/">Steam</a>
-                <a href="https://specs.gg/ngleeq.thai">Specs</a>
-                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview">Tracker</a>
+                <a href="https://www.facebook.com/ngleeqthai/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/_ngleeq.thai/?hl=en" target="_blank">Instagram</a>
+                <a href="https://steamcommunity.com/id/ngleeqthai0212/" target="_blank">Steam</a>
+                <a href="https://specs.gg/ngleeq.thai" target="_blank">Settings</a>
+                <a href="https://tracker.gg/valorant/profile/riot/WWWWWWWWWWWWWWW%231234/overview" target="_blank">Tracker</a>
             </div>
         </div>
+        <footer>
+            <p>&copy; 2024 Ngleeqthai. All rights reserved.</p>
+            <img class="valorant-logo" src="valorant-logo.png" alt="Valorant Logo">
+        </footer>
     </div>
-
-    <footer>
-        &copy; 2024 ngleeqthai. All rights reserved.
-    </footer>
-
-    <script>
-        window.addEventListener('load', function () {
-            const loadingScreen = document.getElementById('loading-screen');
-            const loadingVideo = document.getElementById('loading-video');
-            const mainVideo = document.getElementById('main-video');
-            const mainContent = document.getElementById('main-content');
-
-            loadingVideo.addEventListener('ended', function () {
-                loadingScreen.style.display = 'none';
-                mainVideo.style.display = 'block';
-                mainContent.style.display = 'block';
-            });
-        });
-    </script>
 </body>
 </html>
