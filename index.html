@@ -128,6 +128,30 @@
             width: 100%;
             border-radius: 50%; /* Circular shape */
         }
+         .small-profile {
+    position: relative;
+    margin-top: 20px; /* Space above the small profile picture */
+}
+
+.small-profile-picture {
+    width: 50px; /* Adjust size as needed */
+    border-radius: 50%;
+    border: 2px solid rgba(204, 94, 255, 1); /* Pink border */
+}
+
+.text-bubble {
+    position: absolute;
+    top: -30px; /* Position above the small profile picture */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(204, 94, 255, 1); /* Pink background */
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.8em; /* Adjust text size */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
 
         .fire-animation {
             position: absolute;
@@ -332,6 +356,11 @@
             <div class="profile-picture">
                 <img src="Main Avatar.jpg" alt="Profile Picture">
                 <div class="fire-animation"></div>
+                <div class="small-profile">
+    <div class="text-bubble">This is a text bubble</div>
+    <img src="Small Avatar.jpg" alt="Small Profile Picture" class="small-profile-picture">
+</div>
+
             </div>            
             <div class="intro">
                 <h2>ngleeqthai</h2>
