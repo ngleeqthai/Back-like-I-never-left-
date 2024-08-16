@@ -111,7 +111,7 @@
         }
 
         .profile-picture {
-            position: fixed;
+            position: relative;
             max-width: 12vw;
             margin-top: 4px;
             margin-bottom: 4px;
@@ -130,17 +130,12 @@
         }
 
         .small-profile-picture {
-            position: relative;
-            max-width: 5vw;
-            margin-top: 0px;
-            margin-bottom: 0px;
+            position: absolute;
+            bottom: -5%;
+            right: -5%;
+            width: 15%;
             border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 4px solid rgba(204, 94, 255, 1);
-            animation: glow 3s ease-in-out infinite alternate;
+            border: 3px solid rgba(204, 94, 255, 1);
         }
 
         .fire-animation {
